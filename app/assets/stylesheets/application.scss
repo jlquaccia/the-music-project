@@ -16,3 +16,15 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.user_info {
+  margin-top: 9px;
+}
+
+.nav {
+  margin: 5px 0;
+}
+
+input#user_remember_me.ml_10 {
+  margin-left: 10px;
+}
