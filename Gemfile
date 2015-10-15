@@ -55,3 +55,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 # Handling Sensitive Data
 gem 'figaro', '1.0'
+# Makes web based API's easy
+gem 'httparty'
+# Better way to tackle bugs
+gem 'pry'

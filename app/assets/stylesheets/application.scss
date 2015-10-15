@@ -28,3 +28,19 @@
 input#user_remember_me.ml_10 {
   margin-left: 10px;
 }
+
+.upcoming_playlist {
+  border: 2px solid #000;
+  text-align: center;
+  width: 75%;
+  margin: auto;
+}
+
+.shuffle {
+  list-style-type: none;
+  border: 1px solid #000;
+  width: 27%;
+  margin: auto;
+  padding: 0;
+  border-radius: 15px;
+}
