@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :calendar, only: [:index, :show]
+
+  get 'search' => 'artists#index'
+
   get 'newsfeed' => 'post#index'
 
   devise_for :users

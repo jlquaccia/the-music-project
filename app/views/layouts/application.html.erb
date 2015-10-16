@@ -14,9 +14,9 @@
       <li><%= link_to "About", about_path %></li>
       <% if current_user %>
         <li><%= link_to "Profile", user_path(current_user) %></li>
-        <li><%= link_to "Artist Search" %></li>
-        <li><%= link_to "Newsfeed" %></li>
-        <li><%= link_to "Calendar" %></li>
+        <li><%= link_to "Artist Search", search_path %></li>
+        <li><%= link_to "Newsfeed", newsfeed_path %></li>
+        <li><%= link_to "Calendar", calendar_index_path %></li>
       <% end %>
 
       <div class="pull-right user_info">
