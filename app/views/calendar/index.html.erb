@@ -1,3 +1,7 @@
 <h1><%= @user.name %>'s Calendar</h1>
-
-<%= link_to (image_tag("sample_calendar.png", alt: "Example Calendar", class: 'img-responsive')), "http://www.bandsintown.com/event/10701004?artist=Kendrick%20Lamar&came_from=203" %>
+<div>
+  <h4 class="inline"><%= link_to "Calendar" %></h4>
+  <h4 class="inline"><%= link_to "List" %></h4>
+  <h4 class="inline"><%= link_to "Map" %></h4>
+</div>
+<%= link_to (image_tag("sample_calendar.png", alt: "Example Calendar", class: 'img-responsive mtb_10')), "http://www.bandsintown.com/event/10701004?artist=Kendrick%20Lamar&came_from=203" %>
