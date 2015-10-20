@@ -12,6 +12,24 @@
   </div>
 <% end %>
 
-<% @hash_version["artists"]["items"].each do |band| %>
-  <li class="lst_none"><%= image_tag(band["images"].first["url"], class: 'img-responsive') rescue "No Images" %><%= band["name"] %></li>
+<% @hash_version["artists"]["items"].each_with_index do |band, index| %>
+  <% if index == @hash_version["artists"]["items"].size - 1 %>
+    <li class="artist_li">
+      <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
+      <br>
+      <h1 class="artist_name"><%= band["name"] %></h1>
+      <br>
+      <h4>(Follow)</h4>
+      <!-- no hr with last li -->
+    </li>
+  <% else %>
+    <li class="artist_li">
+      <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
+      <br>
+      <h1 class="artist_name"><%= band["name"] %></h1>
+      <br>
+      <h4>(Follow)</h4>
+      <hr class="artists_hr">
+    </li>
+  <% end %>
 <% end %>

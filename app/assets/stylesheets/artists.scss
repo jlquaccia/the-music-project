@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.lst_none {
+.artist_li {
   list-style-type: none;
+  margin-bottom: 15px;
+}
+
+li .artist_img {
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+}
+
+.artists_hr {
+  border-color: #000;
+}
+
+.artist_name {
+  color: gray;
+}
+
+.mic_bg {
+  background-color: gray;
 }
