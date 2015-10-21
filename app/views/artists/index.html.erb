@@ -19,6 +19,14 @@
       <br>
       <h1 class="artist_name"><%= band["name"] %></h1>
       <br>
+      <% if band["genres"].empty? %>
+        <h5>no genres</h5>
+      <% else %>
+        <h5><%= band["genres"] %></h5>
+      <% end %>
+      <br>
+      <h5><%= band["followers"]["total"] %> followers</h5>
+      <br>
       <h4>(Follow)</h4>
       <!-- no hr with last li -->
     </li>
@@ -27,6 +35,14 @@
       <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
       <br>
       <h1 class="artist_name"><%= band["name"] %></h1>
+      <br>
+      <% if band["genres"].empty? %>
+        <h5>no genres</h5>
+      <% else %>
+        <h5><%= band["genres"] %></h5>
+      <% end %>
+      <br>
+      <h5><%= band["followers"]["total"] %> followers</h5>
       <br>
       <h4>(Follow)</h4>
       <hr class="artists_hr">
