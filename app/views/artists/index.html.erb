@@ -2,10 +2,10 @@
 <i>(search for artists you would like to follow)</i>
 <br>
 <br>
-<%= form_tag("/search", method: "get") do %>
+<%= form_tag(artists_path, method: :get) do %>
   <div class="form-group">
     <%= label_tag(:query, "Search artist by name:") %>
-    <%= text_field_tag(:query, "", class: 'form-control', autofocus: true, placeholder: "Enter artist name") %>
+    <%= text_field_tag(:query, params[:query], class: 'form-control', autofocus: true, placeholder: "Enter artist name") %>
   </div>
   <div class="form-group">
     <%= submit_tag("Search", class: 'btn btn-success') %>

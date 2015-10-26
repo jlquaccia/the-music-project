@@ -1,8 +1,16 @@
 class ArtistsController < ApplicationController
   def index
-    # params[:query] = gets.chomp
+    # params[:query] = "http://localhost:3000/search?query=#{params[:name][:value]}"
+    request = search_params[:query]
+    unless request.nil?
+      response = HTTParty.get("https://api.spotify.com/v1/search?q="+request+"&type=artist")
+      @hash_version = JSON.parse(response.body)
+    end
+  end
 
-    response = HTTParty.get("https://api.spotify.com/v1/search?q=#{CGI.escape params[:query]}&type=artist")
-    @hash_version = JSON.parse(response.body)
+  private
+
+  def search_params
+    params.permit(:query, :utf8, :commit)
   end
 end
