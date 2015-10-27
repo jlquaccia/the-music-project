@@ -1,5 +1,5 @@
 <div class="follow">
-  <% if follow = current_user.followed(artist) %>
+  <% if follow = current_user.followed(@artist) %>
     <%= link_to [artist, follow], class: 'btn btn-danger', method: :delete do %>
       Unfollow
     <% end %>

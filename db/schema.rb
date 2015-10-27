@@ -42,12 +42,11 @@ ActiveRecord::Schema.define(version: 20151021060934) do
 
   create_table "follows", force: true do |t|
     t.integer  "user_id"
-    t.integer  "artist_id"
+    t.string   "artist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "follows", ["artist_id"], name: "index_follows_on_artist_id"
   add_index "follows", ["user_id"], name: "index_follows_on_user_id"
 
   create_table "posts", force: true do |t|

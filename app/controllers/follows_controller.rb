@@ -1,9 +1,9 @@
 class FollowsController < ApplicationController
   def create
-    artist = Artist.find(params[:artist_id])
-    follow = current_user.follows.build(artist: artist)
+    @artist = params[:artist_id]
+    @follower = Follow.create(artist_id: @artist, user_id: params[:user_id])
 
-    if follow.save
+    if @follower.save
       flash[:notice] = "Followed"
       redirect_to artists_path
     else
@@ -13,10 +13,11 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-    artist = Artist.find(params[:artist_id])
-    follow = current_user.follows.find(params[:id])
+    @artist = params[:artist_id]
+    @follow = Follow.find(params[:id])
+    @user_id = @follow.user_id
 
-    if follow.destroy
+    if @follow.destroy
       flash[:notice] = "Unfollowed"
       redirect_to artists_path
     else
