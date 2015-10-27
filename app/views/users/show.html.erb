@@ -17,8 +17,10 @@
       <br>
       <br>
       <ol>
-        <% @hash_version["artists"].each do |band| %>
-          <li><%= band["name"] %> <em>(<%= link_to "playlist" %>)</em></li>
+        <% @hash_version["tracks"].each do |track| %>
+          <li>
+            <%= link_to "#{track['name']}", "#{track['preview_url']}" %>
+          </li>
         <% end %>
       </ol>
     </div>

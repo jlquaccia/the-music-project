@@ -31,9 +31,12 @@ input#user_remember_me.ml_10 {
 
 .upcoming_playlist {
   border: 2px solid #000;
-  text-align: center;
   width: 75%;
   margin: auto;
+
+  h4, .shuffle {
+    text-align: center;
+  }
 }
 
 .shuffle {
