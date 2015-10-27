@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :calendar, only: [:index, :show]
 
-  # get 'search' => 'artists#index'
   resources :artists, only: [:index] do
     resource :follows, only: [:create, :destroy]
   end
