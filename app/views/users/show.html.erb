@@ -26,3 +26,33 @@
     </div>
   </div>
 </div>
+
+<%= audio_tag("01 The Chronic (Intro).m4a",
+              "02 Fuck Wit Dre Day (And Everybody's Celebratin').m4a",
+              "03 Let Me Ride.m4a",
+              "04 The Day the Niggaz Took Over.m4a",
+              "05 Nuthin' but a _G_ Thang.m4a",
+              "06 Deeez Nuuuts.m4a",
+              "07 Lil' Ghetto Boy.m4a",
+              "08 A Nigga Witta Gun.m4a",
+              "09 Rat-Tat-Tat-Tat.m4a",
+              "10 The $20 Sack Pyramid.m4a",
+              "11 Lyrical Gangbang.m4a",
+              "12 High Powered.m4a",
+              "13 The Doctor's Office.m4a",
+              "14 Stranded On Death Row.m4a",
+              "15 The Roach (The Chronic Outro).m4a",
+              "16 Bitches Ain't Shit.m4a") %>
+
+<script>
+  $(function(){
+    $('audio,video').mediaelementplayer({
+        loop: true,
+        shuffle: true,
+        playlist: true,
+        audioHeight: 30,
+        playlistposition: 'top',
+        features: ['playlistfeature', 'prevtrack', 'playpause', 'nexttrack', 'loop', 'shuffle', 'playlist', 'current', 'progress', 'duration', 'volume']
+    });
+  });
+</script>
