@@ -59,3 +59,8 @@ gem 'figaro', '1.0'
 gem 'httparty'
 # Better way to tackle bugs
 gem 'pry'
+# Images
+gem 'carrierwave'
+gem 'mini_magick'
+# A cloud services library and easier way to upload to Amazon S3
+gem 'fog'
