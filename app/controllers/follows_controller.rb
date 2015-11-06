@@ -1,7 +1,10 @@
 class FollowsController < ApplicationController
+  include FollowsHelper
+
   def create
     @artist = params[:artist_id]
-    @follower = Follow.create(artist_id: @artist, user_id: params[:user_id])
+    @artist_name = artist_name(@artist)
+    @follower = Follow.create(artist_id: @artist, artist_name: @artist_name, user_id: params[:user_id])
 
     if @follower.save
       flash[:notice] = "Followed"

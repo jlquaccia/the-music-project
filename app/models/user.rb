@@ -25,4 +25,14 @@ class User < ActiveRecord::Base
 
     results.shuffle.join(",")
   end
+
+  # Grabs any upcoming concerts a followed artist may have that is near where the user lives
+  # def followed_artist_dates
+  #   results = []
+  #   follows.each do |follow|
+  #     response = HTTParty.get("http://api.bandsintown.com/artists/#{follow.artist_name}/events/search.json?api_version=2.0&app_id=YOUR_APP_ID&location=use_geoip")
+  #     @hash_version = JSON.parse(response.body)
+  #     @hash_version
+  #   end
+  # end
 end
