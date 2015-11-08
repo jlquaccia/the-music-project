@@ -7,8 +7,8 @@
 <br>
 <% current_user.follows.each do |follow| %>
   
-  <% @hash_version.each do |date| %>
-  
+  <% @hash_version_array.each do |date| %>
+    binding.pry
     <% date["artists"].each do |info| %>
       <h1 class="artist_name"><%= info["name"] %></h1>
       <br>
