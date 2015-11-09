@@ -32,9 +32,9 @@
         <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
         
         <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
-          <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id %>
+          <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, remote: true, id: current_user.id %>
         <% else %>
-          <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id %>
+          <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, remote: true, id: current_user.id %>
         <% end %>
         
         <!-- no hr with last li -->
@@ -57,9 +57,9 @@
 <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
         
         <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
-          <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id %>
+          <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, remote: true, id: current_user.id %>
         <% else %>
-          <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id %>
+          <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, remote: true, id: current_user.id %>
         <% end %>
 
         <hr class="artists_hr">

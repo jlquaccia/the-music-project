@@ -1,0 +1,5 @@
+<% if @follow.destroyed? %>
+  $('#'+<%= @user_id.to_s %>).replaceWith('<a data-method="post" data-remote="true" href="/artists/'+<%= @artist %>+'/follows?user_id=<%= current_user.id %>" id="<%= current_user.id %>" rel="nofollow">Follow</a>');
+<% else %>
+  $('#'+<%= @user_id.to_s %>).prepend("<div class='alert alert-danger'><%= flash[:error] = 'Oops, something went wrong..' %></div>");
+<% end %>

@@ -6,12 +6,9 @@ class FollowsController < ApplicationController
     @artist_name = artist_name(@artist)
     @follower = Follow.create(artist_id: @artist, artist_name: @artist_name, user_id: params[:user_id])
 
-    if @follower.save
-      flash[:notice] = "Followed"
-      redirect_to artists_path
-    else
-      flash[:error] = "Failed to follow, please try again."
-      redirect_to artists_path
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -20,12 +17,9 @@ class FollowsController < ApplicationController
     @follow = Follow.find(params[:id])
     @user_id = @follow.user_id
 
-    if @follow.destroy
-      flash[:notice] = "Unfollowed"
-      redirect_to artists_path
-    else
-      flash[:error] = "Failed to unfollow, please try again."
-      redirect_to artists_path
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 end

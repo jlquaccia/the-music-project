@@ -1,0 +1,5 @@
+<% if @follower.save %>
+  $('#'+<%= params[:user_id] %>).replaceWith('<a data-method="delete" data-remote="true" href="/artists/'+<%= @artist %>+'/follows/'+<%= @follow %>+'" id="<%= @user_id %>" rel="nofollow">Unfollow</a>');
+<% else %>
+  $('#'+<%= params[:user_id] %>).prepend("<div 'alert alert-danger'><%= flash[:error] = 'Oops, something went wrong..' %></div>");
+<% end %>
