@@ -7,40 +7,22 @@
 <br>
 
   
-  <% @hash_version_array.each do |date| %>
-
-    <% date[0]["artists"].each do |info| %>
-        <h1 class="artist_name"><%= info["name"] %></h1>
-        <br>
-        <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
-      <% end %>
-      <br>
-      <br>
-      <%= date[0]["venue"]["name"] %>
-      <br>
-      <%= date[0]["formatted_datetime"] %>
-      <br>
-      <%= date[0]["formatted_location"] %>, <%= date[0]["venue"]["country"] %>
-      <br>
-      Tickets <%= date[0]["ticket_status"].titleize %> <%= link_to("Buy", "#{date[0]['ticket_url']}") %>
+<% @hash_version_array.each do |date| %>
+  <h3 class="artist_name"><%= date[0]["formatted_datetime"] %></h3>
+  <% date[0]["artists"].each do |info| %>
+    <h1 class="artist_name"><%= info["name"] %></h1>
+    <br>
+    <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
   <% end %>
 
+  <br>
+  <br>
 
-
-
-  <% if false %>
-    <% date["artists"].each do |info| %>
-      <h1 class="artist_name"><%= info["name"] %></h1>
-      <br>
-      <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
-    <% end %>
-    <br>
-    <br>
-    <%= date["venue"]["name"] %>
-    <br>
-    <%= date["formatted_datetime"] %>
-    <br>
-    <%= date["formatted_location"] %>, <%= date["venue"]["country"] %>
-    <br>
-    Tickets <%= date["ticket_status"].titleize %> <%= link_to("Buy", "#{date['ticket_url']}") %>
-  <% end %>
+  <%= date[0]["venue"]["name"] %>
+  <br>
+  <%= date[0]["formatted_location"] %>, <%= date[0]["venue"]["country"] %>
+  <br>
+  Tickets <%= date[0]["ticket_status"].titleize %> <%= link_to("Buy", "#{date[0]['ticket_url']}") %>
+  <br>
+  <hr class="artists_hr">
+<% end %>

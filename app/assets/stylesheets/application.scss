@@ -68,6 +68,10 @@ input#user_remember_me.ml_10 {
   background-color: #fff;
 }
 
+.artists_hr {
+  border-color: #000;
+}
+
 // Media Queries
 
 @media (max-width: 767px) {
@@ -76,6 +80,8 @@ input#user_remember_me.ml_10 {
       background-color: #000;
       float: none;
       color: #fff;
+      border-radius: 10px;
+      margin-bottom: 1px;
 
       a {
         color: #fff;
@@ -83,8 +89,15 @@ input#user_remember_me.ml_10 {
         &:hover {
           color: #000;
           background-color: #fff;
+          border-radius: 10px;
+          text-decoration: underline;
+          width: 100%;
         }
       }
     }
-}
+
+    .user_info {
+      margin-bottom: 10px;
+    }
+  }
 }
