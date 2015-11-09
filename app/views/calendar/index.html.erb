@@ -5,10 +5,30 @@
   <h4 class="inline"><%= link_to "Map" %></h4>
 </div>
 <br>
-<% current_user.follows.each do |follow| %>
+
   
   <% @hash_version_array.each do |date| %>
-    
+
+    <% date[0]["artists"].each do |info| %>
+        <h1 class="artist_name"><%= info["name"] %></h1>
+        <br>
+        <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
+      <% end %>
+      <br>
+      <br>
+      <%= date[0]["venue"]["name"] %>
+      <br>
+      <%= date[0]["formatted_datetime"] %>
+      <br>
+      <%= date[0]["formatted_location"] %>, <%= date[0]["venue"]["country"] %>
+      <br>
+      Tickets <%= date[0]["ticket_status"].titleize %> <%= link_to("Buy", "#{date[0]['ticket_url']}") %>
+  <% end %>
+
+
+
+
+  <% if false %>
     <% date["artists"].each do |info| %>
       <h1 class="artist_name"><%= info["name"] %></h1>
       <br>
@@ -23,7 +43,4 @@
     <%= date["formatted_location"] %>, <%= date["venue"]["country"] %>
     <br>
     Tickets <%= date["ticket_status"].titleize %> <%= link_to("Buy", "#{date['ticket_url']}") %>
-
   <% end %>
-
-<% end %>
