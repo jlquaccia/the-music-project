@@ -67,3 +67,24 @@ input#user_remember_me.ml_10 {
 .navbar-toggle .icon-bar {
   background-color: #fff;
 }
+
+// Media Queries
+
+@media (max-width: 767px) {
+  .mobile {
+    li {
+      background-color: #000;
+      float: none;
+      color: #fff;
+
+      a {
+        color: #fff;
+
+        &:hover {
+          color: #000;
+          background-color: #fff;
+        }
+      }
+    }
+}
+}
