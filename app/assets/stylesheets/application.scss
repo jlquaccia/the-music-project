@@ -101,3 +101,34 @@ input#user_remember_me.ml_10 {
     }
   }
 }
+
+.exit {
+  color: gray;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+div#modal {
+    background-color: #fff;
+    height: auto;
+    border: 1px solid #000;
+    border-radius: 5px;
+    position: absolute;
+    width: 60%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 100px;
+    display: none;
+}
+
+.content {
+  h3,
+  div,
+  h4 {
+    padding: 10px;
+  }
+}
