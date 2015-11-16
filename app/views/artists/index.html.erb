@@ -30,21 +30,15 @@
         <br>
         <h1 class="artist_name"><%= band["name"] %></h1>
         <br>
-        <% if band["genres"].empty? %>
-          <h5>no genres</h5>
-        <% else %>
-          <h5><%= band["genres"] %></h5>
-        <% end %>
-        <br>
-        <h5><%= band["followers"]["total"] %> followers</h5>
+        <h5><%= number_with_delimiter(band["followers"]["total"], :delimiter => ',') %> followers on Spotify</h5>
         <br>
 
         <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
         
         <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
-          <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id %>
+          &#91; <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id, class: 'follow_link' %> &#93;
         <% else %>
-          <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id %>
+          &#91; <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id, class: 'follow_link' %> &#93;
         <% end %>
         
         <!-- no hr with last li -->
@@ -55,21 +49,15 @@
         <br>
         <h1 class="artist_name"><%= band["name"] %></h1>
         <br>
-        <% if band["genres"].empty? %>
-          <h5>no genres</h5>
-        <% else %>
-          <h5><%= band["genres"] %></h5>
-        <% end %>
-        <br>
-        <h5><%= band["followers"]["total"] %> followers</h5>
+        <h5><%= number_with_delimiter(band["followers"]["total"], :delimiter => ',') %> followers on Spotify</h5>
         <br>
 
 <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
         
         <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
-          <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id %>
+          &#91; <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id, class: 'follow_link' %> &#93;
         <% else %>
-          <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id %>
+          &#91; <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id, class: 'follow_link' %> &#93;
         <% end %>
 
         <hr class="artists_hr">

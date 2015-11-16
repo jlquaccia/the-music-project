@@ -64,3 +64,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 # A cloud services library and easier way to upload to Amazon S3
 gem 'fog'
+# Helps with the web scaping
+gem 'mechanize'

@@ -5,12 +5,14 @@
 .artist_li {
   list-style-type: none;
   margin-bottom: 15px;
+  background-color: #FFFFFF;
+  padding: 20px;
 }
 
 .artist_img {
   border-radius: 20px;
   width: 100px;
-  height: 100px;
+  height: 100px !important;
 }
 
 .artist_name {
@@ -23,4 +25,12 @@
 
 .delay2s {
   animation-delay: 2s;
+}
+
+.follow_link {
+  color: #808080;
+
+  &:hover {
+    color: #808080;
+  }
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
   <nav class="navbar navbar-static-top" role="navigation">
-    <div class="container">
+    <div class="container nav_container_bg">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_nav">
           <span class="sr-only">Toggle Navigation</span>
@@ -59,9 +59,11 @@
           <%= flash[:alert]%>
         </div>
       <% end %>
-
-      <%= yield %>
     </div>
   </nav>
+  
+  <div class="container body_container">
+    <%= yield %>
+  </div>
 </body>
 </html>

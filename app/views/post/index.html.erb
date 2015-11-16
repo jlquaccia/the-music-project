@@ -1,5 +1,7 @@
 <h1><%= @user.name %>'s Music Newsfeed</h1>
-
-<%= link_to (image_tag("music_news_example.png", alt: "Example News Post", class: 'img-responsive')), "http://pitchfork.com/news/61655-bruce-springsteen-announces-the-river-box-set/" %>
-<%= link_to (image_tag("music_news_example_2.png", alt: "Example News Post", class: 'img-responsive')), "http://pitchfork.com/news/61654-ty-dolla-ign-reveals-free-tc-tracklist-featuring-kendrick-lamar-kanye-west-fetty-wap-future-more/" %>
-<%= link_to (image_tag("music_news_example_3.png", alt: "Example News Post", class: 'img-responsive')), "http://pitchfork.com/news/61651-health-remix-purity-rings-begin-again/" %>
+<br>
+<%= link_to("#{@title}", "#{@title_href}") %>
+<br>
+<%= @description %>
+<br>
+<%= @date_and_time %>
