@@ -8,10 +8,10 @@ class FollowsController < ApplicationController
 
     if @follower.save
       flash[:notice] = "Followed"
-      redirect_to artists_path
+      redirect_to user_path(current_user)
     else
       flash[:error] = "Failed to follow, please try again."
-      redirect_to artists_path
+      redirect_to user_path(current_user)
     end
   end
 

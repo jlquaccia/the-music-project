@@ -5,7 +5,6 @@
     <h4 class="pull-left"><%= link_to "My Calendar", calendar_index_path %></h4>
     <h4 class="pull-right"><%= link_to "My Newsfeed", newsfeed_path %></h4>
     <div class="clearfix"></div>
-    <h4><%= pluralize(current_user.follows.count, "artist") %> being followed <em><%= link_to "(edit)", "#", class: 'edit_follows' %></em></h4>
     <h4>7 upcoming concerts</h4>
   </div>
   <div class="col-md-6 text-center">
@@ -14,29 +13,24 @@
   </div>
 </div>
 
-<!-- followed artists overlay -->
-<div class="overlay" id="modal">
-  <div class="content">
-    <h3>Edit Follows</h3>
-    <div>
-      <% current_user.follows.each do |follow| %>
-        <%= follow["artist_name"] %> <div class="pull-right">&times;</div>
-        <hr class="artists_hr">
-      <% end %>
-    </div>
-    <h4><a href="#" class="exit">Close</a></h4>
-  </div>
-</div>
-<!-- /////\\\\\/////\\\\\/////\\\\\ -->
-
 <h3>My Follows</h3>
 <div>
   <% if current_user.follows.count == 0 %>
     <h5><em>your followed artists will be displayed here.</em></h5>
     <h5><em>maybe you should <%= link_to("search", artists_path) %> for some..</em></h5>
   <% else %>
+    <h5><%= pluralize(current_user.follows.count, "artist") %> being followed</h5>
+    <br>
     <% current_user.follows.each do |follow| %>
-      <%= follow["artist_name"] %> <div class="pull-right"><%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete) %></div>
+      <%= follow["artist_name"] %>
+      
+      <!-- button to unfollow an artist -->
+      <div class="pull-right round_button">
+        <div class="round_button_circle">
+          <%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete, class: 'round_button') %>
+        </div>
+      </div>
+
       <hr class="artists_hr">
     <% end %>
   <% end %>

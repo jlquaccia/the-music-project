@@ -110,28 +110,28 @@ input#user_remember_me.ml_10 {
   }
 }
 
-div#modal {
-    background-color: #fff;
-    height: auto;
-    border: 1px solid #000;
-    border-radius: 5px;
-    position: absolute;
-    width: 60%;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    top: 100px;
-    display: none;
-}
+// div#modal {
+//     background-color: #fff;
+//     height: auto;
+//     border: 1px solid #000;
+//     border-radius: 5px;
+//     position: absolute;
+//     width: 60%;
+//     left: 0;
+//     right: 0;
+//     margin-left: auto;
+//     margin-right: auto;
+//     top: 100px;
+//     display: none;
+// }
 
-.content {
-  h3,
-  div,
-  h4 {
-    padding: 10px;
-  }
-}
+// .content {
+//   h3,
+//   div,
+//   h4 {
+//     padding: 10px;
+//   }
+// }
 
 body {
   background-color: #363636;
@@ -147,4 +147,31 @@ body {
 
 .mb-1 {
   margin-bottom: -1px;
+}
+
+.round_button {
+  width: 0%;
+}
+
+.round_button_circle {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  border: 10px solid #E9E9E9;
+  box-shadow: 0 0 1px black;
+  margin-left: -20px;
+}
+
+.round_button a {
+  display: block;
+  float: left;
+  width: 100%;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  line-height: 1em;
+  margin-top: -8px;
+  text-align: center;
+  margin-left: -3px;
+  color: #000;
 }
