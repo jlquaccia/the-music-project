@@ -27,11 +27,17 @@
     <h4><a href="#" class="exit">Close</a></h4>
   </div>
 </div>
+<!-- /////\\\\\/////\\\\\/////\\\\\ -->
 
-<h3>Edit Follows</h3>
+<h3>My Follows</h3>
 <div>
-  <% current_user.follows.each do |follow| %>
-    <%= follow["artist_name"] %> <div class="pull-right">&times;</div>
-    <hr class="artists_hr">
+  <% if current_user.follows.count == 0 %>
+    <h5><em>your followed artists will be displayed here.</em></h5>
+    <h5><em>maybe you should <%= link_to("search", artists_path) %> for some..</em></h5>
+  <% else %>
+    <% current_user.follows.each do |follow| %>
+      <%= follow["artist_name"] %> <div class="pull-right"><%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete) %></div>
+      <hr class="artists_hr">
+    <% end %>
   <% end %>
 </div>

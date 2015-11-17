@@ -22,10 +22,10 @@ class FollowsController < ApplicationController
 
     if @follow.destroy
       flash[:notice] = "Unfollowed"
-      redirect_to artists_path
+      redirect_to user_path(current_user)
     else
       flash[:error] = "Failed to unfollow, please try again."
-      redirect_to artists_path
+      redirect_to user_path(current_user)
     end
   end
 end
