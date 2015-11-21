@@ -1,7 +1,18 @@
 <h1><%= @user.name %>'s Music Newsfeed</h1>
 <br>
-<%= link_to("#{@title}", "#{@title_href}") %>
-<br>
-<%= @description %>
-<br>
-<%= @date_and_time %>
+<% @doc.css('.object-list').each do |objectlist| %>
+  <% objectlist.css('li').each do |li| %>
+    <% li.css('h1 a').each do |a| %>
+      <!-- Article Title & Article Link -->
+      <%= link_to(a.text.strip, @base_url+a['href']) %>
+    <% end %>
+    <br>
+    <!-- Article Description -->
+    <%= li.css('p').text.strip %>
+    <br>
+    <!-- Article Date & Time of Posting -->
+    <%= li.css('h4').text.strip %>
+    <br>
+    <br>
+  <% end %>
+<% end %>

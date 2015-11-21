@@ -27,7 +27,7 @@
       <!-- button to unfollow an artist -->
       <div class="pull-right round_button">
         <div class="round_button_circle">
-          <%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete, class: 'round_button') %>
+          <%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete, data: { confirm: 'Are you sure you want to unfollow this artist?' }, class: 'round_button') %>
         </div>
       </div>
 
