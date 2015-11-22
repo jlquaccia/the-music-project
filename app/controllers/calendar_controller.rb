@@ -15,7 +15,4 @@ class CalendarController < ApplicationController
     # binding.pry
     @hash_version_array
   end
-
-  def show
-  end
 end
