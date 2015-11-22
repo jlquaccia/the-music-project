@@ -7,9 +7,9 @@ class PostController < ApplicationController
     @artist_name_array = []
 
     # grabbing all artist names from a users current follows
-    @user.follows.each do |follow|
-      @artist_name_array << follow["artist_name"]
-    end
+    # @user.follows.each do |follow|
+    #   @artist_name_array << follow["artist_name"]
+    # end
     
     # binding.pry
     url = 'http://pitchfork.com/search/more/?query=green%20day&filter=news'
