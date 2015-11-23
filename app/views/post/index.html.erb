@@ -1,25 +1,24 @@
 <h1><%= @user.name %>'s Music Newsfeed</h1>
 <br>
-<% @artist_name_array.each do %>
-  <% @doc.css('.object-list').each do |objectlist| %>
-    <!-- STICKY HEADER -->
-    <h1 class="mb15 artist_name newsfeed_artist followMeBar"><%= @artist_name %></h1>
-    <!-- END STICKY HEADER -->
-    <% objectlist.css('li').each do |li| %>
-      <li class="animated bounceInUp artist_li">
-        <% li.css('h1 a').each do |a| %>
-          <!-- Article Title & Article Link -->
-          <%= link_to(a.text.strip, @base_url+a['href']) %>
-        <% end %>
-        <br>
-        <!-- Article Description -->
-        <%= li.css('p').text.strip %>
-        <br>
-        <!-- Article Date & Time of Posting -->
-        <%= li.css('h4').text.strip %>
-        <br>
-        <br>
-      </li>
+
+  <% @docs.each do |name, doc| %>
+    <% doc.css('.object-list').each do |objectlist| %>
+      <h1 class="mb15 artist_name newsfeed_artist animated bounceInUp"><%= name %></h1>
+      <% objectlist.css('li').each do |li| %>
+        <li class="animated bounceInUp artist_li">
+          <% li.css('h1 a').each do |a| %>
+            <!-- Article Title & Article Link -->
+            <%= link_to(a.text.strip, @base_url+a['href']) %>
+          <% end %>
+          <br>
+          <!-- Article Description -->
+          <%= li.css('p').text.strip %>
+          <br>
+          <!-- Article Date & Time of Posting -->
+          <%= li.css('h4').text.strip %>
+          <br>
+          <br>
+        </li>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
