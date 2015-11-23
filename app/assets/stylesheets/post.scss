@@ -5,3 +5,35 @@
 .mb15 {
   margin-bottom: 15px;
 }
+
+.newsfeed_artist {
+  background-color: #363636;
+  color: #fff;
+  padding: 10px;
+}
+
+// STICKY HEADERS ON NEWSFEED PAGE //
+
+.followMeBar {
+  background: #999;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  margin-top: 0;
+}
+
+.followMeBar.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 5;
+  margin-top: 0;
+}
+
+.followMeBar.fixed.absolute {
+  position: absolute;
+}
+
+// // // // // // // // // // // //

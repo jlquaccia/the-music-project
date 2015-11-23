@@ -2,7 +2,9 @@
 <br>
 <% @artist_name_array.each do %>
   <% @doc.css('.object-list').each do |objectlist| %>
-    <h1 class="mb15 artist_name animated bounceInUp"><%= @artist_name %></h1>
+    <!-- STICKY HEADER -->
+    <h1 class="mb15 artist_name newsfeed_artist followMeBar"><%= @artist_name %></h1>
+    <!-- END STICKY HEADER -->
     <% objectlist.css('li').each do |li| %>
       <li class="animated bounceInUp artist_li">
         <% li.css('h1 a').each do |a| %>
