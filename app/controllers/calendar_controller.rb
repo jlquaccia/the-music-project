@@ -13,6 +13,5 @@ class CalendarController < ApplicationController
     end
 
     @hash_version_array
-    # binding.pry
   end
 end
