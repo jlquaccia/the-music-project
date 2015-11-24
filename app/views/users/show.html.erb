@@ -15,6 +15,12 @@
 
 <h3>My Follows</h3>
 <div>
+  <!-- Option to delete an individual follow, several follows or all follows at once -->
+  <!-- UNDER CONSTRUCTION -->
+  <% if current_user.follows.count >= 2 %>
+    <%= button_tag("Unfollow All", class: 'btn btn-danger') %>
+  <% end %>
+  <!--  -->
   <% if current_user.follows.count == 0 %>
     <h5><em>your followed artists will be displayed here.</em></h5>
     <h5><em>maybe you should <%= link_to("search", artists_path) %> for some..</em></h5>

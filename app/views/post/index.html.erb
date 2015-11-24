@@ -2,6 +2,18 @@
 <br>
 
 <% @docs.each do |name, doc| %>
+  <% if doc.css('.object-list').empty? %>
+    <div class="feedify">
+      <div class="feedify-item">
+        <div class="mb15 fs30 artist_name newsfeed_artist animated bounceInUp">
+          <%= name %>
+        </div>
+      </div>
+    </div>
+    <div class="feedify-item-body">
+      <p class="artist_li animated bounceInUp">No news to report..</p>
+    </div>
+  <% end %>
   <% doc.css('.object-list').each do |objectlist| %>
     <div class="feedify">
       <div class="feedify-item">
