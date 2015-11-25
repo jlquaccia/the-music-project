@@ -9,22 +9,16 @@
 <% @hash_version_array.each do |date| %>
   <% date[0]["artists"].each_with_index do |info, index| %>
     <% if index == 0 %>
-      <div class="feedify">
-        <div class="feedify-item">
-          <div class="feedify-item-header mb15 artist_name newsfeed_artist animated bounceInUp">
-            <h1><%= info["name"] %></h1>
-          </div>
-          <div class="feedify-item-body">
-            <div class="animated bounceInUp artist_li top">
-              <br>
-              <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
-              <br>
-              <div class="artist_links_wrapper">
-                <%= link_to("Web", info['website'], class: 'artist_links') unless info['website'].nil? %>
-                <%= link_to("Facebook", info['facebook_page_url'], class: 'artist_links') unless info['facebook_page_url'].nil? %>
-              </div>
-            </div>
-          </div>
+      <div class="mb15 artist_name newsfeed_artist animated bounceInUp">
+        <h1><%= info["name"] %></h1>
+      </div>
+      <div class="animated bounceInUp artist_li top">
+        <br>
+        <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
+        <br>
+        <div class="artist_links_wrapper">
+          <%= link_to("Web", info['website'], class: 'artist_links') unless info['website'].nil? %>
+          <%= link_to("Facebook", info['facebook_page_url'], class: 'artist_links') unless info['facebook_page_url'].nil? %>
         </div>
       </div>
     <% end %>
