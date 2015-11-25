@@ -25,3 +25,7 @@
   <br>
   <hr class="artists_hr">
 <% end %>
+
+<%= request.ip %>
+<%= request.location %>
+<%= request.location.try(:city) %>

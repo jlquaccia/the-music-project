@@ -66,3 +66,5 @@ gem 'mini_magick'
 gem 'fog'
 # Helps with the web scaping
 gem 'mechanize'
+# Location, location, location
+gem 'geocoder'

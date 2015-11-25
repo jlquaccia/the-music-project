@@ -13,7 +13,7 @@ class CalendarController < ApplicationController
       @hash_version_array << @hash_version if @hash_version != []
     end
 
-    binding.pry
+    # binding.pry
     @hash_version_array
   end
 end
