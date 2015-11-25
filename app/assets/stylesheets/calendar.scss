@@ -11,3 +11,20 @@
 .mtb_10 {
   margin: 10px 0;
 }
+
+.top {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.artist_links_wrapper {
+  margin-top: 10px;
+  
+  .artist_links {
+    background-color: #555555;
+    color: #fff;
+    padding: 2px;
+    border-radius: 2px;
+    font-size: 11px;
+  }
+}

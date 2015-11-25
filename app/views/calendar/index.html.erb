@@ -7,21 +7,44 @@
 <br>
 
 <% @hash_version_array.each do |date| %>
-  <h3 class="artist_name"><%= date[0]["formatted_datetime"] %></h3>
-  <% date[0]["artists"].each do |info| %>
-    <h1 class="artist_name"><%= info["name"] %></h1>
-    <br>
-    <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
+  <% date[0]["artists"].each_with_index do |info, index| %>
+    <% if index == 0 %>
+      <div class="feedify">
+        <div class="feedify-item">
+          <div class="feedify-item-header mb15 artist_name newsfeed_artist animated bounceInUp">
+            <h1><%= info["name"] %></h1>
+          </div>
+          <div class="feedify-item-body">
+            <div class="animated bounceInUp artist_li top">
+              <br>
+              <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
+              <br>
+              <div class="artist_links_wrapper">
+                <%= link_to("Web", info['website'], class: 'artist_links') unless info['website'].nil? %>
+                <%= link_to("Facebook", info['facebook_page_url'], class: 'artist_links') unless info['facebook_page_url'].nil? %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-
-  <br>
-  <br>
-
-  <%= date[0]["venue"]["name"] %>
-  <br>
-  <%= date[0]["formatted_location"] %>, <%= date[0]["venue"]["country"] %>
-  <br>
-  Tickets <%= date[0]["ticket_status"].titleize %> <%= link_to("Buy", "#{date[0]['ticket_url']}") %>
-  <br>
-  <hr class="artists_hr">
+  
+  <div class="animated bounceInUp artist_li">
+    <%= date[0]["venue"]["name"] %>
+    <br>
+    <%= date[0]["formatted_location"] %>, <%= date[0]["venue"]["country"] %>
+    <br>
+    Tickets <%= date[0]["ticket_status"].titleize %> <%= link_to("Buy", "#{date[0]['ticket_url']}") %>
+    <br>
+    <h3 class="artist_name"><%= date[0]["formatted_datetime"] %></h3>
+    <br>
+    <hr class="artists_hr">
+  </div>
 <% end %>
+
+<script>
+  $(function() {
+    $('.feedify').feedify();
+  });
+</script>
