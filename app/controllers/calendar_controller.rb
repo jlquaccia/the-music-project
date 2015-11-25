@@ -17,3 +17,11 @@ class CalendarController < ApplicationController
     @hash_version_array
   end
 end
+
+# NOTE: request.ip will ONLY work in production, it does not work in development.  use_geoip WILL work in development but NOT in production.
+
+# returns the current users ip address
+# request.ip
+
+# returns the current users city /// works b/c of the geocoder gem
+# request.location.try(:city) /// works b/c of the geocoder gem

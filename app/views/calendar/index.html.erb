@@ -5,7 +5,7 @@
   <h4 class="inline"><%= link_to "Map" %></h4>
 </div>
 <br>
-  
+
 <% @hash_version_array.each do |date| %>
   <h3 class="artist_name"><%= date[0]["formatted_datetime"] %></h3>
   <% date[0]["artists"].each do |info| %>
@@ -25,7 +25,3 @@
   <br>
   <hr class="artists_hr">
 <% end %>
-
-<%= request.ip %>
-<%= request.location %>
-<%= request.location.try(:city) %>
