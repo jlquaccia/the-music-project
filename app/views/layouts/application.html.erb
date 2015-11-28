@@ -9,7 +9,7 @@
 </head>
 <body>
   <nav class="mb-1 navbar navbar-static-top" role="navigation">
-    <div class="container nav_container_bg">
+    <div class="container-fluid nav_container_bg">
       <div class="navbar-header">
         <div class="mobile_title_div">
           <strong class="mobile_title">el proyecto de la musica</strong>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="collapse navbar-collapse" id="main_nav">
-        <ul class="nav nav-tabs mobile">
+        <ul class="nav nav-tabs no_border_bottom mobile">
           <li><%= link_to "The Music Project", root_path %></li>
           <li><%= link_to "About", about_path %></li>
           <% if current_user %>
@@ -65,8 +65,14 @@
     </div>
   </nav>
   
-  <div class="container body_container">
-    <%= yield %>
-  </div>
+  <% if current_page?(controller: 'welcome', action: 'index') %>
+    <div class="container-fluid grid">
+      <%= yield %>
+    </div>
+  <% else %>
+    <div class="container body_container">
+      <%= yield %>
+    </div>
+  <% end %>
 </body>
 </html>
