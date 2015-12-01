@@ -1,6 +1,10 @@
 <h1><%= @user.name %>'s Music Newsfeed</h1>
 <br>
 
+<% if current_user.follows.count == 0 %>
+  <h3>Recieve news about your favorite artists!  How about <%= link_to("searching", artists_path) %> for some to follow right now?</h3>
+<% end %>
+
 <% @docs.each do |name, doc| %>
   <% if doc.css('.object-list').empty? %>
     <div class="feedify">

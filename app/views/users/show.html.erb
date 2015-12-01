@@ -13,31 +13,48 @@
   </div>
 </div>
 
-<h3>My Follows</h3>
-<div>
-  <!-- Option to delete an individual follow, several follows or all follows at once -->
-  <!-- UNDER CONSTRUCTION -->
-  <% if current_user.follows.count >= 2 %>
-    <%= button_tag("Unfollow All", class: 'btn btn-danger') %>
-  <% end %>
-  <!--  -->
-  <% if current_user.follows.count == 0 %>
-    <h5><em>your followed artists will be displayed here.</em></h5>
-    <h5><em>maybe you should <%= link_to("search", artists_path) %> for some..</em></h5>
-  <% else %>
-    <h5><%= pluralize(current_user.follows.count, "artist") %> total</h5>
-    <br>
-    <% current_user.follows.each do |follow| %>
-      <%= follow["artist_name"] %>
-      
-      <!-- button to unfollow an artist -->
-      <div class="pull-right round_button">
-        <div class="round_button_circle">
-          <%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete, data: { confirm: 'Are you sure you want to unfollow this artist?' }, class: 'round_button') %>
-        </div>
-      </div>
+<div class="row">
+  <div class="col-md-6">
+    <h3>My Follows</h3>
+    <div>
+      <% if current_user.follows.count == 0 %>
+        <h5><em>your followed artists will be displayed here.</em></h5>
+        <h5><em>maybe you should <%= link_to("search", artists_path) %> for some..</em></h5>
+      <% else %>
+        <h5><%= pluralize(current_user.follows.count, "artist") %> total</h5>
+        <%= button_tag("Edit", class: 'btn btn-default btn-xs') %>
+        <br>
+        <br>
+        <% current_user.follows.each do |follow| %>
+          <%= follow["artist_name"] %>
 
-      <hr class="artists_hr">
+          <!-- button to unfollow an artist -->
+          <div class="pull-right round_button">
+            <div class="round_button_circle">
+              <%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete, data: { confirm: 'Are you sure you want to unfollow this artist?' }, class: 'round_button') %>
+            </div>
+          </div>
+
+          <hr class="artists_hr">
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-6 text-center">
+    <h3>Recommendations</h3>
+    <% if current_user.follows.count == 0 %>
+      <p>Recommendations based on who you follow will appear here..</p>
+    <% else %>
+      <p>Based on your follows you might also like..</p>
+      <% @hash_version_array.each do |item| %>
+        <% item['artists'].each do |artist| %>
+          <div class="mb15 artist_name newsfeed_artist">
+            <%= artist['name'] %>
+          </div>
+          <%= link_to(image_tag(artist['images'][0]['url'], class: 'img-responsive artist_recommendation_img', width: 300, height: 300), artists_path) %>
+          <br>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

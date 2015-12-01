@@ -3,9 +3,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @hash_version_array = []
 
-    # response = HTTParty.get("https://api.spotify.com/v1/artists/21mKp7DqtSNHhCAU2ugvUw/top-tracks?country=US")
-    # @hash_version = JSON.parse(response.body)
+    # binding.pry
+    @user.follows.each do |follow|
+      response = HTTParty.get("https://api.spotify.com/v1/artists/#{follow.artist_id}/related-artists")
+      @hash_version = JSON.parse(response.body)
+      @artist_name = follow.artist_name
+
+      @hash_version_array << @hash_version
+    end
+
+    @hash_version_array
   end
 
   def update

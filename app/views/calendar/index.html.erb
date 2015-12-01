@@ -6,6 +6,28 @@
 </div>
 <br>
 
+<!-- if a user isn't following any artists yet -->
+<% if current_user.follows.count == 0 %>
+  <h3>See which of your favorite artists are playing concerts around you!  How about <%= link_to("searching", artists_path) %> for some to follow right now?</h3>
+<% end %>
+
+<!-- if none of a users follows have shows coming up -->
+<% if @hash_version_array.empty? && current_user.follows.count >= 1 %>
+  <div class="feedify">
+    <div class="feedify-item">
+      <div class="mb15 fs30 artist_name newsfeed_artist animated bounceInUp">
+        <p>No Upcoming Shows</p>
+      </div>
+    </div>
+  </div>
+  <div class="feedify-item-body">
+    <p class="artist_li animated bounceInUp">None of the artists you are following currently have any upcoming shows..  They will appear here if they do.</p>
+  </div>
+<% elsif current_user.follows.count >= 1 %>
+  <h4>You have <%= pluralize(@hash_version_array.count, "upcoming show") %></h4>
+<% end %>
+
+<!-- if a users follows have upcoming shows -->
 <% @hash_version_array.each do |date| %>
   <% date[0]["artists"].each_with_index do |info, index| %>
     <% if index == 0 %>
