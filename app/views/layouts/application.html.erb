@@ -65,14 +65,8 @@
     </div>
   </nav>
   
-  <% if current_page?(controller: 'welcome', action: 'index') %>
-    <div class="container-fluid grid">
-      <%= yield %>
-    </div>
-  <% else %>
-    <div class="container body_container">
-      <%= yield %>
-    </div>
-  <% end %>
+  <div>
+    <%= yield %>
+  </div>
 </body>
 </html>

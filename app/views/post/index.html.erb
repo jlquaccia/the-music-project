@@ -1,54 +1,56 @@
-<h1><%= @user.name %>'s Music Newsfeed</h1>
-<br>
+<div class="container">
+  <h1><%= @user.name %>'s Music Newsfeed</h1>
+  <br>
 
-<% if current_user.follows.count == 0 %>
-  <h3>Recieve news about your favorite artists!  How about <%= link_to("searching", artists_path) %> for some to follow right now?</h3>
-<% end %>
+  <% if current_user.follows.count == 0 %>
+    <h3>Recieve news about your favorite artists!  How about <%= link_to("searching", artists_path) %> for some to follow right now?</h3>
+  <% end %>
 
-<% @docs.each do |name, doc| %>
-  <% if doc.css('.object-list').empty? %>
-    <div class="feedify">
-      <div class="feedify-item">
-        <div class="mb15 fs30 artist_name newsfeed_artist animated bounceInUp">
-          <%= name %>
+  <% @docs.each do |name, doc| %>
+    <% if doc.css('.object-list').empty? %>
+      <div class="feedify">
+        <div class="feedify-item">
+          <div class="mb15 fs30 artist_name newsfeed_artist animated bounceInUp">
+            <%= name %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="feedify-item-body">
-      <p class="artist_li animated bounceInUp">No news to report..</p>
-    </div>
-  <% end %>
-  <% doc.css('.object-list').each do |objectlist| %>
-    <div class="feedify">
-      <div class="feedify-item">
-        <div class="feedify-item-header mb15 artist_name newsfeed_artist animated bounceInUp">
-          <%= name %>
-        </div>
-        <div class="feedify-item-body">
-          <% objectlist.css('li').each do |li| %>
-            <li class="animated bounceInUp artist_li">
-              <% li.css('h1 a').each do |a| %>
-                <!-- Article Title & Article Link -->
-                <%= link_to(a.text.strip, @base_url+a['href']) %>
-              <% end %>
-              <br>
-              <!-- Article Description -->
-              <%= li.css('p').text.strip %>
-              <br>
-              <!-- Article Date & Time of Posting -->
-              <%= li.css('h4').text.strip %>
-              <br>
-              <br>
-            </li>
-          <% end %>
+      <div class="feedify-item-body">
+        <p class="artist_li animated bounceInUp">No news to report..</p>
+      </div>
+    <% end %>
+    <% doc.css('.object-list').each do |objectlist| %>
+      <div class="feedify">
+        <div class="feedify-item">
+          <div class="feedify-item-header mb15 artist_name newsfeed_artist animated bounceInUp">
+            <%= name %>
+          </div>
+          <div class="feedify-item-body">
+            <% objectlist.css('li').each do |li| %>
+              <li class="animated bounceInUp artist_li">
+                <% li.css('h1 a').each do |a| %>
+                  <!-- Article Title & Article Link -->
+                  <%= link_to(a.text.strip, @base_url+a['href']) %>
+                <% end %>
+                <br>
+                <!-- Article Description -->
+                <%= li.css('p').text.strip %>
+                <br>
+                <!-- Article Date & Time of Posting -->
+                <%= li.css('h4').text.strip %>
+                <br>
+                <br>
+              </li>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<script>
-  $(function() {
-    $('.feedify').feedify();
-  });
-</script>
+  <script>
+    $(function() {
+      $('.feedify').feedify();
+    });
+  </script>
+</div>

@@ -142,7 +142,7 @@ input#user_remember_me.ml_10 {
 // }
 
 body {
-  background-color: #363636;
+  background-color: #E9E9E9;
 }
 
 .nav_container_bg {
@@ -194,4 +194,13 @@ body {
 
 .artist_recommendation_img {
   margin: auto;
+}
+
+.artist_recommendation {
+  margin: 15px auto;
+  width: 50%;
+}
+
+.artist_recommendation_wrapper {
+  display: inline-block;
 }
