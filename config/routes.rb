@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :follows, only: [:create, :destroy]
   end
 
+  delete "follows" => 'follows#destroy_many'
+
   get 'newsfeed' => 'post#index'
 
   devise_for :users

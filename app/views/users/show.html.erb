@@ -26,20 +26,52 @@
           <%= button_tag("Edit", class: 'btn btn-default btn-xs') %>
           <br>
           <br>
+          <div class="subselect">
+            <input type="radio" id="all" name="radio1"> Select All
+            <input type="radio" id="none" name="radio1"> Clear All
+          </div>
+          <br>
           <% current_user.follows.each do |follow| %>
-            <%= follow["artist_name"] %>
+            <div class="follow-row">
+              <%= follow["artist_name"] %>
 
-            <!-- button to unfollow an artist -->
-            <div class="pull-right round_button">
-              <div class="round_button_circle">
-                <%= link_to("&times;".html_safe, artist_follow_path(follow["artist_id"], follow["id"]), method: :delete, data: { confirm: 'Are you sure you want to unfollow this artist?' }, class: 'round_button') %>
-              </div>
+              <!-- button to unfollow an artist -->
+              
+              <p class="pull-right">Unfollow</p>
+              <input type="checkbox" class="unfollow-box pull-right" data-id="<%= follow.id %>"/>
+
+              <hr class="artists_hr">
             </div>
-
-            <hr class="artists_hr">
           <% end %>
         <% end %>
       </div>
+
+
+      <button id="unfollow-button">Unfollow these bands</button>
+
+
+      <script>
+        $("#unfollow-button").click(function(){
+          var ids = [];
+          $.each($(".unfollow-box:checked"), function(index, data){
+            ids.push($(data).data("id"));
+            $(data).parent(".follow-row").hide();
+          });
+
+          $.ajax("/follows", {method: "delete", data: {follow_ids: ids}})
+        });
+
+        // select/unselect all checkboxes
+
+        $('#all').on('change', function() {
+          $('.unfollow-box').prop('checked', $(this).is(':checked'));
+        });
+
+        $('#none').on('change', function() {
+          $('.unfollow-box').prop('checked', !$(this).is(':checked'));
+        });
+      </script>
+
     </div>
     <div class="col-md-6 text-center">
       <h3>Recommendations</h3>

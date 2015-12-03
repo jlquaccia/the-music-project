@@ -29,4 +29,11 @@ class FollowsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+
+  def destroy_many
+
+    Follow.where(id: params[:follow_ids]).delete_all
+
+    render nothing: true
+  end
 end
