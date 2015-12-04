@@ -112,7 +112,7 @@
               <div class="artist_recommendation artist_name newsfeed_artist">
                 <%= artist['name'] %>
               </div>
-              <%= link_to(image_tag(artist['images'][0]['url'], class: 'img-responsive artist_recommendation_img', width: 200, height: 200), artists_path) %>
+              <%= link_to(image_tag(artist['images'][0]['url'], class: 'img-responsive artist_recommendation_img', width: 200, height: 200), artists_path) rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg', width: 200, height: 200) %>
               <br>
             </div>
           <% end %>
