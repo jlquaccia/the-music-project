@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :follows, only: [:create, :destroy]
   end
 
+  # need line below to route to destroy_many action
   delete "follows" => 'follows#destroy_many'
 
   get 'newsfeed' => 'post#index'

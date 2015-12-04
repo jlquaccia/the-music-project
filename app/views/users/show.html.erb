@@ -23,10 +23,11 @@
           <h5><em>maybe you should <%= link_to("search", artists_path) %> for some..</em></h5>
         <% else %>
           <h5><%= pluralize(current_user.follows.count, "artist") %> total</h5>
-          <%= button_tag("Edit", class: 'btn btn-default btn-xs') %>
+          <%= button_tag("Edit", class: 'btn btn-default btn-xs', id: 'edit_btn') %>
+          <%= button_tag("Cancel", class: 'btn btn-danger btn-xs pull-right', id: 'cancel_btn', style: 'display:none') %>
           <br>
           <br>
-          <div class="subselect">
+          <div class="subselect" style="display:none">
             <input type="radio" id="all" name="radio1"> Select All
             <input type="radio" id="none" name="radio1"> Clear All
           </div>
@@ -37,8 +38,8 @@
 
               <!-- button to unfollow an artist -->
               
-              <p class="pull-right">Unfollow</p>
-              <input type="checkbox" class="unfollow-box pull-right" data-id="<%= follow.id %>"/>
+              <p class="pull-right unfollow-text" style="display:none">Unfollow</p>
+              <input type="checkbox" class="unfollow-box pull-right" data-id="<%= follow.id %>" style="display:none"/>
 
               <hr class="artists_hr">
             </div>
@@ -47,7 +48,7 @@
       </div>
 
 
-      <button id="unfollow-button">Unfollow these bands</button>
+      <button id="unfollow-button" class="btn btn-danger" style="display:none">Unfollow these bands</button>
 
 
       <script>
@@ -58,7 +59,14 @@
             $(data).parent(".follow-row").hide();
           });
 
-          $.ajax("/follows", {method: "delete", data: {follow_ids: ids}})
+          $.ajax("/follows", {method: "delete", data: {follow_ids: ids}});
+
+          $("#edit_btn").fadeIn();
+          $("#cancel_btn").slideUp();
+          $(".subselect").slideUp();
+          $(".unfollow-text").slideUp();
+          $(".unfollow-box").slideUp();
+          $("#unfollow-button").slideUp();
         });
 
         // select/unselect all checkboxes
@@ -69,6 +77,25 @@
 
         $('#none').on('change', function() {
           $('.unfollow-box').prop('checked', !$(this).is(':checked'));
+        });
+
+        // click the edit button to show the checkboxes to unfollow
+        $("#edit_btn").click(function() {
+          $("#cancel_btn").slideDown();
+          $(".subselect").slideDown();
+          $(".unfollow-text").slideDown();
+          $(".unfollow-box").slideDown();
+          $("#unfollow-button").slideDown();
+          $("#edit_btn").hide();
+        });
+
+        $("#cancel_btn").click(function() {
+          $("#edit_btn").fadeIn();
+          $("#cancel_btn").slideUp();
+          $(".subselect").slideUp();
+          $(".unfollow-text").slideUp();
+          $(".unfollow-box").slideUp();
+          $("#unfollow-button").slideUp();
         });
       </script>
 
