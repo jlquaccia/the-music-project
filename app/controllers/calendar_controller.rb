@@ -2,6 +2,9 @@ class CalendarController < ApplicationController
   require 'uri'
 
   def index
+    require 'nokogiri'
+    require 'open-uri'
+
     @user = current_user
     @hash_version_array = []
 
@@ -20,10 +23,13 @@ class CalendarController < ApplicationController
     # binding.pry
     @hash_version_array
 
+    # grabbing the correct venue name for each artists show (currently only works for the last artist being iterated over)
     @hash_version_array.each do |date|
-      @latitude = date[0]["venue"]["latitude"]
-      @longitude = date[0]["venue"]["longitude"]
+      @fb_rsvp_page = date[0]["facebook_rsvp_url"]
+      page = Nokogiri::HTML(open(@fb_rsvp_page))
+      @venue_name = page.css(".event-venue a")[0].text
     end
+
   end
 
   def map
