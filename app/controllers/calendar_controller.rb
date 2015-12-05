@@ -19,6 +19,15 @@ class CalendarController < ApplicationController
 
     # binding.pry
     @hash_version_array
+
+    @hash_version_array.each do |date|
+      @latitude = date[0]["venue"]["latitude"]
+      @longitude = date[0]["venue"]["longitude"]
+    end
+  end
+
+  def map
+    @user = current_user
   end
 end
 

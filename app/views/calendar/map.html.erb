@@ -1,0 +1,25 @@
+<div class="container">
+  <h1><%= @user.name %>'s Upcoming Shows</h1>
+  <div>
+    <h4 class="inline"><%= link_to "List", calendar_index_path %></h4>
+    <h4 class="inline"><%= link_to "Map", map_path %></h4>
+  </div>
+
+  <input type="button" value="Show Location" onclick="javascript:showlocation()" />   <br/>
+ 
+  Latitude: <span id="latitude"></span>       <br/>
+   
+  Longitude: <span id="longitude"></span>
+</div>
+
+<script type="text/javascript">
+  function showlocation() {
+     // One-shot position request.
+     navigator.geolocation.getCurrentPosition(callback);
+  }
+   
+  function callback(position) {
+     document.getElementById('latitude').innerHTML = position.coords.latitude;
+     document.getElementById('longitude').innerHTML = position.coords.longitude;
+  }  
+</script>

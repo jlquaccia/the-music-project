@@ -69,3 +69,6 @@ gem 'fog'
 gem 'mechanize'
 # Location, location, location
 gem 'geocoder'
+gem 'geokit'
+# Google Maps
+gem 'gmaps4rails'
