@@ -54,7 +54,7 @@
       <br>
       Tickets <%= date[0]["ticket_status"].titleize %> <%= link_to("Buy", "#{date[0]['ticket_url']}") %>
       <br>
-      <%= link_to("Directions", "http://maps.google.com/maps?saddr=#{'37.4889250, -122.2730250'}&daddr=#{@venue_name}&hl=en") %>
+      <%= link_to("Directions", "http://maps.google.com/maps?saddr=#{'37.4889250, -122.2730250'}&daddr=#{@venue_name}+#{@venue_city}&hl=en") %>
       <br>
       <h3 class="artist_name"><%= date[0]["formatted_datetime"] %></h3>
       <br>
