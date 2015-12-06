@@ -21,15 +21,18 @@ class CalendarController < ApplicationController
     end
 
     # binding.pry
-    # @hash_version_array
+    @hash_version_array
 
     # grabbing the correct venue name for each artists show (currently only works for the last artist being iterated over)
-    @hash_version_array.each do |date|
-      @fb_rsvp_page = date[0]["facebook_rsvp_url"]
-      page = Nokogiri::HTML(open(@fb_rsvp_page))
-      @venue_name = page.css(".event-venue a")[0].text
-      @venue_city = page.css(".event-venue a")[1].text
-    end
+    # @hash_version_array.each do |date|
+    #   @fb_rsvp_page = date[0]["facebook_rsvp_url"]
+    #   page = Nokogiri::HTML(open(@fb_rsvp_page))
+    #   @venue_name = page.css(".event-venue a")[0].text
+    #   @venue_city = page.css(".event-venue a")[1].text
+    # end
+
+    # put back in the calendar#index view
+    # <%= link_to("Directions", "http://maps.google.com/maps?saddr=#{'37.4889250, -122.2730250'}&daddr=#{@venue_name}+#{@venue_city}&hl=en") %>
 
   end
 
