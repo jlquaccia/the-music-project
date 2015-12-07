@@ -20,9 +20,6 @@ class CalendarController < ApplicationController
       @hash_version_array << @hash_version if @hash_version != []
     end
 
-    # binding.pry
-    @hash_version_array
-
     # grabbing the correct venue name for each artists show (currently only works for the last artist being iterated over)
     @hash_version_array.each do |date|
       @fb_rsvp_page = date[0]["facebook_rsvp_url"] if @fb_rsvp_page != []
@@ -33,6 +30,8 @@ class CalendarController < ApplicationController
       @venue = v.gsub(/[&]/, 'and')
       @city = c.gsub(/[&]/, 'and')
     end
+
+    @hash_version_array if @hash_version_array != []
   end
 
   # def map
