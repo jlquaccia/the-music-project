@@ -21,7 +21,7 @@ class CalendarController < ApplicationController
     end
 
     # grabbing the correct venue name for each artists show (currently only works for the last artist being iterated over)
-    if @hash_version_array != [] do
+    if @hash_version_array != []
       @hash_version_array.each do |date|
         @fb_rsvp_page = date[0]["facebook_rsvp_url"] if @fb_rsvp_page != []
         page = Nokogiri::HTML(open(@fb_rsvp_page))
