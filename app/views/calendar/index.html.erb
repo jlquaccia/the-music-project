@@ -1,10 +1,6 @@
 
 <div class="container">
   <h1><%= @user.name %>'s Upcoming Shows</h1>
-  <div>
-    <h4 class="inline"><%= link_to "List", calendar_index_path %></h4>
-  </div>
-  <br>
 
   <!-- if a user isn't following any artists yet -->
   <% if current_user.follows.count == 0 %>

@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 
     # binding.pry
     @hash_version_array
+
+    # @sorted = @hash_version_array.sort_by { |k| k[0]['artists']['followers']['total'] }
   end
 
   def update
