@@ -27,8 +27,11 @@ class CalendarController < ApplicationController
     @hash_version_array.each do |date|
       @fb_rsvp_page = date[0]["facebook_rsvp_url"]
       page = Nokogiri::HTML(open(@fb_rsvp_page))
-      @venue_name = page.css(".event-venue a")[0].text
-      @venue_city = page.css(".event-venue a")[1].text
+      v = page.css(".event-venue a")[0].text
+      c = page.css(".event-venue a")[1].text
+      
+      @venue = v.gsub(/[&]/, 'and')
+      @city = c.gsub(/[&]/, 'and')
     end
   end
 
