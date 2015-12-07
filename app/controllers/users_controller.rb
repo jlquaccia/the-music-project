@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @hash_version_array = []
 
-    # binding.pry
     @user.follows.each do |follow|
       response = HTTParty.get("https://api.spotify.com/v1/artists/#{follow.artist_id}/related-artists")
       @hash_version = JSON.parse(response.body)
@@ -14,6 +13,7 @@ class UsersController < ApplicationController
       @hash_version_array << @hash_version
     end
 
+    # binding.pry
     @hash_version_array
   end
 

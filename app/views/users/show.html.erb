@@ -2,19 +2,11 @@
   <h1><%= current_user.name %>'s Profile</h1>
 
   <div class="row">
-    <div class="col-md-6 text-center">
-      <h4>Neighborhood Watch</h4>
-      <small>see if any of your follows are playing near you!</small>
-      <%= image_tag("http://mike.teczno.com/img/google-maps-track.png", class: 'img-responsive') %>
-    </div>
-    <div class="col-md-6 text-center">
+    <div class="col-md-6">
       <h4>Listen to who you follow!</h4>
       <small>music is not streamable via mobile at this time :'(</small><br>
       <iframe src="https://embed.spotify.com/?uri=spotify:trackset:My%20Follows:<%= @user.followed_artist_tracks %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
     </div>
-  </div>
-
-  <div class="row">
     <div class="col-md-6">
       <h3>My Follows</h3>
       <div>
@@ -100,7 +92,10 @@
       </script>
 
     </div>
-    <div class="col-md-6 text-center">
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-center">
       <h3>Recommendations</h3>
       <% if current_user.follows.count == 0 %>
         <p>Recommendations based on who you follow will appear here..</p>
@@ -112,6 +107,7 @@
               <div class="artist_recommendation artist_name newsfeed_artist">
                 <%= artist['name'] %>
               </div>
+              <%= number_with_delimiter(artist['followers']['total'], delimiter: ',') %> followers
               <%= link_to(image_tag(artist['images'][0]['url'], class: 'img-responsive artist_recommendation_img', width: 200, height: 200), artists_path) rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg', width: 200, height: 200) %>
               <br>
             </div>

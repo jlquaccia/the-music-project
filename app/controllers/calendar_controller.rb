@@ -35,9 +35,9 @@ class CalendarController < ApplicationController
     end
   end
 
-  def map
-    @user = current_user
-  end
+  # def map
+  #   @user = current_user
+  # end
 end
 
 # NOTE: request.ip will ONLY work in production, it does not work in development.  use_geoip WILL work in development but NOT in production.
