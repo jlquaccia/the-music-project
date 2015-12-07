@@ -23,17 +23,17 @@ class CalendarController < ApplicationController
     @hash_version_array
 
     # grabbing the correct venue name for each artists show (currently only works for the last artist being iterated over)
-    # if @hash_version_array != []
-    #   @hash_version_array.each do |date|
-    #     @fb_rsvp_page = date[0]["facebook_rsvp_url"] if @fb_rsvp_page != []
-    #     page = Nokogiri::HTML(open(@fb_rsvp_page))
-    #     v = page.css(".event-venue a")[0].text
-    #     c = page.css(".event-venue a")[1].text
+    if @hash_version_array != []
+      @hash_version_array.each do |date|
+        @fb_rsvp_page = date[0]["facebook_rsvp_url"] if @fb_rsvp_page != []
+        page = Nokogiri::HTML(open(@fb_rsvp_page))
+        v = page.css(".event-venue a")[0].text
+        c = page.css(".event-venue a")[1].text
         
-    #     @venue = v.gsub(/[&]/, 'and')
-    #     @city = c.gsub(/[&]/, 'and')
-    #   end
-    # end
+        @venue = v.gsub(/[&]/, 'and')
+        @city = c.gsub(/[&]/, 'and')
+      end
+    end
   end
 
   # def map
