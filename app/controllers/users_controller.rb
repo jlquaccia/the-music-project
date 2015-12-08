@@ -13,10 +13,11 @@ class UsersController < ApplicationController
       @hash_version_array << @hash_version
     end
 
-    # binding.pry
-    @hash_version_array
+    sorted = @hash_version_array.first["artists"].sort_by { |a| a["followers"]["total"] }
+    @most_to_least_followers_version_array = sorted.reverse
 
-    # @sorted = @hash_version_array.sort_by { |k| k[0]['artists']['followers']['total'] }
+    # binding.pry
+    # @hash_version_array
   end
 
   def update
