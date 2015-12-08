@@ -13,8 +13,9 @@ class UsersController < ApplicationController
       @hash_version_array << @hash_version
     end
 
-    sorted = @hash_version_array.first["artists"].sort_by { |a| a["followers"]["total"] }
-    @most_to_least_followers_version_array = sorted.reverse
+    @sorted = @hash_version_array.first["artists"].sort { |a,b| b["followers"]["total"] <=> a["followers"]["total"] } if @hash_version_array != []
+    # @big_to_small = @sorted.reverse
+    # @most_to_least_followers_version_array = sorted.reverse
 
     # binding.pry
     # @hash_version_array

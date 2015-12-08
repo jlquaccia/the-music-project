@@ -101,7 +101,7 @@
         <p>Recommendations based on who you follow will appear here..</p>
       <% else %>
         <p>Based on your follows you might also like..</p>
-        <% @most_to_least_followers_version_array.each do |item| %>
+        <% @sorted.each do |item| %>
           <div class="artist_recommendation_wrapper">
             <div class="artist_recommendation artist_name newsfeed_artist">
               <%= item['name'] %>
