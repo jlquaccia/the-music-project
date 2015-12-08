@@ -63,13 +63,6 @@
     <% end %>
   <% end %>
 
-  <!-- Able to grab multiple shows by one artist -->
-  <% @hash_version_array[0].each do |item| %>
-    <%= item["artists"][0]["name"] %>
-    <br>
-    <br>
-  <% end %>
-
   <script>
     $(function() {
       $('.feedify').feedify();
