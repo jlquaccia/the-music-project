@@ -266,8 +266,8 @@ body {
 
 #menu-toggle {
   position: absolute;
-  margin: 20px;
-  right: 0;
+  right: 12.5px;
+  top: 10px;
   border-radius: 30px;
   background-color: #000;
   border: none;
@@ -320,4 +320,48 @@ body {
 
 span.white {
   color: #fff;
+}
+
+.no_mb {
+  margin-bottom: 0;
+  
+}
+
+.nav_header {
+  font-size: 25px;
+  color: #fff;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #fff;
+}
+
+.nav_header_underline {
+  text-decoration: underline;
+}
+
+.nav_links {
+  font-size: 20px;
+  font-family: Circular,Helvetica,Arial,sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.sidebar-nav li a {
+  &:hover {
+    background-color: #F45A39;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 12.5px;
+  color: #000;
+  font-weight: bold;
+
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
 }
