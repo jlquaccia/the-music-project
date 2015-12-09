@@ -271,7 +271,7 @@ body {
 #menu-toggle {
   position: absolute;
   right: 12.5px;
-  top: 10px;
+  top: 9px;
   border-radius: 30px;
   background-color: #000;
   border: none;
@@ -350,12 +350,12 @@ span.white {
   text-transform: uppercase;
   margin-bottom: 10px;
   font-weight: 300;
-  border-right: 1px solid #000;
 }
 
 .sidebar-nav li a {
   &:hover {
-    background-color: #F45A39;
+    background-color: #fff;
+    color: #000;
   }
 }
 

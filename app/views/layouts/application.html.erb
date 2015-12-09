@@ -99,13 +99,19 @@
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
+      $("#wrapper").toggleClass("overflow");
       $(".sidebar-nav li").fadeToggle("slow").delay(500).toggleClass("animated");
       
       // fadeToggles logo on smaller screens (responsive jQuery)
       if ($(".mobile_only").css("display") != "none") {
         $(".logo").fadeToggle();
+        $("body").css("overflow", "hidden");
       }
     });
+
+    // if ($("#wrapper").hasClass(".overflow")) {
+    //   $("body").css("overflow", "hidden");
+    // }
 
     /* Modernizr 2.7.1 (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-csstransitions-shiv-cssclasses-prefixed-testprop-testallprops-domprefixes-load
