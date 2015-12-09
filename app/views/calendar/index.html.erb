@@ -24,7 +24,6 @@
   <% end %>
 
   <!-- if a users follows have upcoming shows -->
-
   <% @hash_version_array.each do |date| %>
     <% date.each do |subdate| %>
       <% subdate["artists"].each_with_index do |info, index| %>
@@ -41,7 +40,7 @@
               <%= link_to("Facebook", info['facebook_page_url'], class: 'artist_links') unless info['facebook_page_url'].nil? %>
             </div>
           </div>
-      
+
           <div class="animated bounceInUp artist_li">
             <%= subdate["venue"]["name"] %>
             <br>
@@ -49,10 +48,7 @@
             <br>
             Tickets <%= subdate["ticket_status"].titleize %> <%= link_to("Buy", "#{subdate['ticket_url']}") %>
             <br>
-
-
             <%= location_info(subdate["facebook_rsvp_url"]) %>
-           
             <br>
             <h3 class="artist_name"><%= subdate["formatted_datetime"] %></h3>
             <br>
