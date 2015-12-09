@@ -8,70 +8,89 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="mb-1 navbar navbar-static-top" role="navigation">
-    <div class="container-fluid nav_container_bg">
-      <div class="navbar-header">
-        <div class="mobile_title_div">
-          <strong class="mobile_title">el proyecto de la musica</strong>
-        </div>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_nav">
-          <span class="sr-only">Toggle Navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
+  <div id="wrapper" class="toggled">
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand slideInUp">
+          <a href="#">The Music Project</a>
+        </li>
+        <li class="fadeInUp delay03">
+          <%= link_to "Home", root_path %>
+        </li>
+        <li class="fadeInUp delay04">
+          <%= link_to "About", about_path %>
+        </li>
 
-      <div class="collapse navbar-collapse" id="main_nav">
-        <ul class="nav nav-tabs no_border_bottom mobile">
-          <li><%= link_to "The Music Project", root_path %></li>
-          <li><%= link_to "About", about_path %></li>
-          <% if current_user %>
-            <li><%= link_to "Profile", user_path(current_user) %></li>
-            <li><%= link_to "Artist Search", artists_path %></li>
-            <li><%= link_to "Newsfeed", newsfeed_path %></li>
-            <li><%= link_to "Calendar", calendar_index_path %></li>
-          <% end %>
+        <% if current_user %>
 
-          <div class="pull-right user_info">
-            <% if current_user %>
-              <%= image_tag(current_user.avatar.tiny.url, class: 'nav_avatar') if current_user.avatar? %>
-              Hello <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>! |
+          <li class="fadeInUp delay05">
+            <%= link_to "Profile", user_path(current_user) %>
+          </li>
+          <li class="fadeInUp delay06">
+            <%= link_to "Artist Search", artists_path %>
+          </li>
+          <li class="fadeInUp delay07">
+            <%= link_to "Newsfeed", newsfeed_path %>
+          </li>
+          <li class="fadeInUp delay08">
+            <%= link_to "Calendar", calendar_index_path %>
+          </li>
+          <div class="bottom_links">
+            <li class="fadeInUp delay09">
+              <%= link_to "Account", edit_user_registration_path %>
+            </li>
+            <li class="fadeInUp delay10">
               <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-            <% else %>
-              <%= link_to "Sign In", new_user_session_path %> |
-              <%= link_to "Sign Up", new_user_registration_path %>
-            <% end %>
+            </li>
           </div>
-        </ul>
-      </div>
 
-      <% if flash[:notice] %>
-        <div class="alert alert-success fade_in_and_out" style="display:none">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
-      <% elsif flash[:error] %>
-        <div class="alert alert-danger fade_in_and_out" style="display:none">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:error] %>
-        </div>
-      <% elsif flash[:alert] %>
-        <div class="alert alert-warning fade_in_and_out" style="display:none">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert]%>
-        </div>
-      <% end %>
+        <% else %>
+          
+          <div class="bottom_links">
+            <li class="fadeInUp delay05">
+              <%= link_to "Sign In", new_user_session_path %>
+            </li>
+            <li class="fadeInUp delay06">
+              <%= link_to "Sign Up", new_user_registration_path %>
+            </li>
+          </div>
+
+        <% end %>
+
+      </ul>
     </div>
-  </nav>
-  
-  <div>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-success fade_in_and_out" style="display:none">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger fade_in_and_out" style="display:none">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:error] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-warning fade_in_and_out" style="display:none">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert]%>
+      </div>
+    <% end %>
+    
+    <a class="btn btn-default" id="menu-toggle">Menu</a>
     <%= yield %>
   </div>
 
   <script>
     // fade in and out flash messages
     $(".fade_in_and_out").fadeIn("slow").delay(3000).fadeOut("slow");
+
+    // toggle main menu from side
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+      $(".sidebar-nav li").fadeToggle("slow").delay(500).toggleClass("animated");
+    });
   </script>
 </body>
 </html>
