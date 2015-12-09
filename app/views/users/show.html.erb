@@ -2,7 +2,7 @@
   <h1><%= current_user.name %>'s Profile</h1>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 text-center">
       <h4>Listen to who you follow!</h4>
       <small>music is not streamable via mobile at this time :'(</small><br>
       <iframe src="https://embed.spotify.com/?uri=spotify:trackset:My%20Follows:<%= @user.followed_artist_tracks %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>

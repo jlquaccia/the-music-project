@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font-family: 'Lato', 'Avenir Next', Arial, sans-serif;
+}
+
 .user_info {
   margin-top: 9px;
 }
@@ -330,6 +334,7 @@ span.white {
 .nav_header {
   font-size: 25px;
   color: #fff;
+  font-weight: 300;
 }
 
 .sidebar-nav > .sidebar-brand a {
@@ -342,9 +347,9 @@ span.white {
 
 .nav_links {
   font-size: 20px;
-  font-family: Circular,Helvetica,Arial,sans-serif;
   text-transform: uppercase;
   margin-bottom: 10px;
+  font-weight: 300;
 }
 
 .sidebar-nav li a {
@@ -363,5 +368,15 @@ span.white {
   &:hover {
     color: #000;
     text-decoration: none;
+  }
+}
+
+.mobile_only {
+  display: none;
+}
+
+@media (max-width: 450px) {
+  .mobile_only {
+    display: block;
   }
 }
