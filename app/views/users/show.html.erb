@@ -100,8 +100,8 @@
       <% if current_user.follows.count == 0 %>
         <p>Recommendations based on who you follow will appear here..</p>
       <% else %>
-        <p>Based on your follows you might also like..</p>
-        <% @sorted.each do |item| %>
+        <p>Based on your follows you might also like.. <br> (presenting <%= @final_sort.count %> recommendations)</p>
+        <% @final_sort.each do |item| %>
           <div class="artist_recommendation_wrapper">
             <div class="artist_recommendation artist_name newsfeed_artist">
               <%= item['name'] %>

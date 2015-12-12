@@ -10,15 +10,22 @@ class UsersController < ApplicationController
       @hash_version = JSON.parse(response.body)
       @artist_name = follow.artist_name
 
-      @hash_version_array << @hash_version
+      @hash_version_array << @hash_version['artists']
     end
 
-    @sorted = @hash_version_array.first["artists"].sort { |a,b| b["followers"]["total"] <=> a["followers"]["total"] } if @hash_version_array != []
-    # @big_to_small = @sorted.reverse
-    # @most_to_least_followers_version_array = sorted.reverse
+    # clean up the @hash_version_array into 1 array of hashes that deals with all of the current artists a user is following
+    @final_array = []
 
-    # binding.pry
-    # @hash_version_array
+    @hash_version_array.map do |subarray|
+      subarray.map do |subsubarray|
+        @final_array << subsubarray
+      end
+    end
+
+    @sorted = @final_array.sort { |a,b| b['followers']['total'] <=> a['followers']['total'] }
+
+    # do not display any duplicate recommendations
+    @final_sort = @sorted.uniq
   end
 
   def update
