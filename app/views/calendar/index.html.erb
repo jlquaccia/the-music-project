@@ -20,43 +20,38 @@
       <p class="artist_li animated bounceInUp">None of the artists you are following currently have any upcoming shows..  They will appear here if they do.</p>
     </div>
   <% elsif current_user.follows.count >= 1 %>
-    <h4>You have <%= pluralize(@hash_version_array.count, "upcoming show") %></h4>
+    <h4>You have <%= pluralize(@final_sort.count, "upcoming show") %></h4>
   <% end %>
 
   <!-- if a users follows have upcoming shows -->
-  <% @hash_version_array.each do |date| %>
-    <% date.each do |subdate| %>
-      <% subdate["artists"].each_with_index do |info, index| %>
-        <% if index == 0 %>
-          <div class="mb15 artist_name newsfeed_artist animated bounceInUp">
-            <h1><%= info["name"] %></h1>
-          </div>
-          <div class="animated bounceInUp artist_li top">
-            <br>
-            <%= image_tag("#{info['thumb_url']}", class: 'artist_img') %>
-            <br>
-            <div class="artist_links_wrapper">
-              <%= link_to("Web", info['website'], class: 'artist_links') unless info['website'].nil? %>
-              <%= link_to("Facebook", info['facebook_page_url'], class: 'artist_links') unless info['facebook_page_url'].nil? %>
-            </div>
-          </div>
+   
+  <% @final_sort.each do |info| %>
+    <div class="mb15 artist_name newsfeed_artist animated bounceInUp">
+      <h1><%= info["artists"][0]["name"].titleize %></h1>
+    </div>
+    <div class="animated bounceInUp artist_li top">
+      <br>
+      <%= image_tag("#{info['artists'][0]['thumb_url']}", class: 'artist_img') %>
+      <br>
+      <div class="artist_links_wrapper">
+        <%= link_to("Web", info['artists'][0]['website'], class: 'artist_links') unless info['artists'][0]['website'].nil? %>
+        <%= link_to("Facebook", info['artists'][0]['facebook_page_url'], class: 'artist_links') unless info['artists'][0]['facebook_page_url'].nil? %>
+      </div>
+    </div>
 
-          <div class="animated bounceInUp artist_li">
-            <%= subdate["venue"]["name"] %>
-            <br>
-            <%= subdate["formatted_location"] %>, <%= subdate["venue"]["country"] %>
-            <br>
-            Tickets <%= subdate["ticket_status"].titleize %> <%= link_to("Buy", "#{subdate['ticket_url']}") %>
-            <br>
-            <%= location_info(subdate["facebook_rsvp_url"]) %>
-            <br>
-            <h3 class="artist_name"><%= subdate["formatted_datetime"] %></h3>
-            <br>
-            <hr class="artists_hr">
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
+    <div class="animated bounceInUp artist_li">
+      <%= info["venue"]["name"] %>
+      <br>
+      <%= info["formatted_location"] %>, <%= info["venue"]["country"] %>
+      <br>
+      Tickets <%= info["ticket_status"].titleize %> <%= link_to("Buy", "#{info['ticket_url']}") %>
+      <br>
+      <%= location_info(info["facebook_rsvp_url"]) %>
+      <br>
+      <h3 class="artist_name"><%= info["formatted_datetime"] %></h3>
+      <br>
+      <hr class="artists_hr">
+    </div>
   <% end %>
 
   <script>
