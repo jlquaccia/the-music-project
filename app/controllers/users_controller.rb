@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @sorted = @final_array.sort { |a,b| b['followers']['total'] <=> a['followers']['total'] }
 
     # do not display any duplicate recommendations
-    @final_sort = @sorted.uniq
+    @final_sort = @sorted.uniq[0...50]
   end
 
   def update
