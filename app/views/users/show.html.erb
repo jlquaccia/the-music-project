@@ -1,104 +1,114 @@
-<div class="container">
-  <h1><%= current_user.name %>'s Profile</h1>
+<div class="container-fluid" id="red_bg">
+  <div class="inner">
+    <div class="container">
+      <h1 class="fixed_profile_header mobile_center"><%= current_user.name %>'s Profile</h1>
 
-  <div class="row">
-    <div class="col-md-6 text-center">
-      <h4>Listen to who you follow!</h4>
-      <small>music is not streamable via mobile at this time :'(</small><br>
-      <iframe src="https://embed.spotify.com/?uri=spotify:trackset:My%20Follows:<%= @user.followed_artist_tracks %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-    </div>
-    <div class="col-md-6">
-      <h3>My Follows</h3>
-      <div>
-        <% if current_user.follows.count == 0 %>
-          <h5><em>your followed artists will be displayed here.</em></h5>
-          <h5><em>maybe you should <%= link_to("search", artists_path) %> for some..</em></h5>
-        <% else %>
-          <h5><%= pluralize(current_user.follows.count, "artist") %> total</h5>
-          <%= button_tag("Edit", class: 'btn btn-default btn-xs', id: 'edit_btn') %>
-          <%= button_tag("Cancel", class: 'btn btn-danger btn-xs pull-right', id: 'cancel_btn', style: 'display:none') %>
-          <br>
-          <br>
-          <div class="subselect" style="display:none">
-            <input type="radio" id="all" name="radio1"> Select All
-            <input type="radio" id="none" name="radio1"> Clear All
-          </div>
-          <br>
-          <% current_user.follows.each do |follow| %>
-            <div class="follow-row">
-              <%= follow["artist_name"] %>
-
-              <!-- button to unfollow an artist -->
-              
-              <p class="pull-right unfollow-text" style="display:none">Unfollow</p>
-              <input type="checkbox" class="unfollow-box pull-right" data-id="<%= follow.id %>" style="display:none"/>
-
-              <hr class="artists_hr">
-            </div>
+      <div class="row">
+        <div class="col-md-6 mb20 mobile_center">
+          <% if current_user.follows.count == 0 %>
+            <h5><em>music by who you follow will be streamable here..</em></h5>
+          <% else %>
+            <h4>Listen to who you follow!</h4>
           <% end %>
-        <% end %>
+          <small class="mobile_only">music is not streamable via mobile at this time :'(.  Listen on your laptop or desktop computer.</small>
+          <iframe src="https://embed.spotify.com/?uri=spotify:trackset:My%20Follows:<%= @user.followed_artist_tracks %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+        </div>
+        <div class="col-md-6">
+          <h3>My Follows</h3>
+          <div>
+            <% if current_user.follows.count == 0 %>
+              <h5><em>your followed artists will be editable and displayed here..</em></h5>
+              <h5><em>(maybe you should <%= link_to("search", artists_path) %> for some..)</em></h5>
+            <% else %>
+              <h5><%= pluralize(current_user.follows.count, "artist") %> total</h5>
+              <%= button_tag("Edit", class: 'btn btn-default btn-xs', id: 'edit_btn') %>
+              <%= button_tag("Cancel", class: 'btn btn-danger btn-xs pull-right', id: 'cancel_btn', style: 'display:none') %>
+              <br>
+              <br>
+              <div class="subselect" style="display:none">
+                <input type="radio" id="all" name="radio1"> Select All
+                <input type="radio" id="none" name="radio1"> Clear All
+              </div>
+              <br>
+              <% current_user.follows.each do |follow| %>
+                <div class="follow-row">
+                  <%= follow["artist_name"] %>
+
+                  <!-- button to unfollow an artist -->
+                  
+                  <p class="pull-right unfollow-text" style="display:none">Unfollow</p>
+                  <input type="checkbox" class="unfollow-box pull-right" data-id="<%= follow.id %>" style="display:none"/>
+
+                  <hr class="artists_hr">
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+
+          <button id="unfollow-button" class="btn btn-danger" style="display:none">Unfollow these bands</button>
+
+
+          <script>
+            $("#unfollow-button").click(function(){
+              var ids = [];
+              $.each($(".unfollow-box:checked"), function(index, data){
+                ids.push($(data).data("id"));
+                $(data).parent(".follow-row").hide();
+              });
+
+              $.ajax("/follows", {method: "delete", data: {follow_ids: ids}});
+
+              $("#edit_btn").fadeIn();
+              $("#cancel_btn").slideUp();
+              $(".subselect").slideUp();
+              $(".unfollow-text").slideUp();
+              $(".unfollow-box").slideUp();
+              $("#unfollow-button").slideUp();
+            });
+
+            // select/unselect all checkboxes
+
+            $('#all').on('change', function() {
+              $('.unfollow-box').prop('checked', $(this).is(':checked'));
+            });
+
+            $('#none').on('change', function() {
+              $('.unfollow-box').prop('checked', !$(this).is(':checked'));
+            });
+
+            // click the edit button to show the checkboxes to unfollow
+            $("#edit_btn").click(function() {
+              $("#cancel_btn").slideDown();
+              $(".subselect").slideDown();
+              $(".unfollow-text").slideDown();
+              $(".unfollow-box").slideDown();
+              $("#unfollow-button").slideDown();
+              $("#edit_btn").fadeOut();
+            });
+
+            $("#cancel_btn").click(function() {
+              $("#edit_btn").fadeIn();
+              $("#cancel_btn").slideUp();
+              $(".subselect").slideUp();
+              $(".unfollow-text").slideUp();
+              $(".unfollow-box").slideUp();
+              $("#unfollow-button").slideUp();
+            });
+          </script>
+
+        </div>
       </div>
-
-
-      <button id="unfollow-button" class="btn btn-danger" style="display:none">Unfollow these bands</button>
-
-
-      <script>
-        $("#unfollow-button").click(function(){
-          var ids = [];
-          $.each($(".unfollow-box:checked"), function(index, data){
-            ids.push($(data).data("id"));
-            $(data).parent(".follow-row").hide();
-          });
-
-          $.ajax("/follows", {method: "delete", data: {follow_ids: ids}});
-
-          $("#edit_btn").fadeIn();
-          $("#cancel_btn").slideUp();
-          $(".subselect").slideUp();
-          $(".unfollow-text").slideUp();
-          $(".unfollow-box").slideUp();
-          $("#unfollow-button").slideUp();
-        });
-
-        // select/unselect all checkboxes
-
-        $('#all').on('change', function() {
-          $('.unfollow-box').prop('checked', $(this).is(':checked'));
-        });
-
-        $('#none').on('change', function() {
-          $('.unfollow-box').prop('checked', !$(this).is(':checked'));
-        });
-
-        // click the edit button to show the checkboxes to unfollow
-        $("#edit_btn").click(function() {
-          $("#cancel_btn").slideDown();
-          $(".subselect").slideDown();
-          $(".unfollow-text").slideDown();
-          $(".unfollow-box").slideDown();
-          $("#unfollow-button").slideDown();
-          $("#edit_btn").fadeOut();
-        });
-
-        $("#cancel_btn").click(function() {
-          $("#edit_btn").fadeIn();
-          $("#cancel_btn").slideUp();
-          $(".subselect").slideUp();
-          $(".unfollow-text").slideUp();
-          $(".unfollow-box").slideUp();
-          $("#unfollow-button").slideUp();
-        });
-      </script>
-
     </div>
   </div>
+</div>
 
+<div class="container-fluid recommendations">
   <div class="row">
     <div class="col-md-12 text-center">
       <h3>Recommendations</h3>
       <% if current_user.follows.count == 0 %>
-        <p>Recommendations based on who you follow will appear here..</p>
+        <p><em>recommendations based on who you follow will appear here..</em></p>
       <% else %>
         <p>Based on your follows you might also like.. <br> (presenting <%= @final_sort.count %> recommendations)</p>
         <% @final_sort.each do |item| %>

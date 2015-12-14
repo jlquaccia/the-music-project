@@ -381,3 +381,49 @@ span.white {
     display: block;
   }
 }
+
+#red_bg {
+  background: url(red1.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  padding-right: 0;
+  padding-left: 0;
+  color: #FFF;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.inner {
+  background: darken(rgba(#F45A39,0.8), 30%) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
+}
+
+@media screen and (max-width: 992px) {
+  .mobile_center {
+    text-align: center;
+  }
+}
+
+h5 {
+  em {
+    a {
+      color: darken(#FFF, 30%);
+
+      &:hover {
+        color: darken(#FFF, 30%);
+      }
+    }
+  }
+}
+
+.mobile_only {
+  display: none;
+}
+
+@media screen and (max-width: 400px) {
+  .mobile_only {
+    display: block;
+  }
+}

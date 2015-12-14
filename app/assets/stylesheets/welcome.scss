@@ -61,10 +61,10 @@ h1.tmp_title {
 }
 
 @media all and (max-width: 800px) {
-  body {
-    background: url('stardust.png') #000 no-repeat center center fixed;
-    background-size: cover;
-  }
+  // body {
+  //   background: url('stardust.png') #000 no-repeat center center fixed;
+  //   background-size: cover;
+  // }
 
   #bgvid {
     display: none;
