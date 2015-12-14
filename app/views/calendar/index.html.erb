@@ -33,10 +33,14 @@
       <br>
       <%= image_tag("#{info['artists'][0]['thumb_url']}", class: 'artist_img') %>
       <br>
-      <div class="artist_links_wrapper">
-        <%= link_to("Web", info['artists'][0]['website'], class: 'artist_links') unless info['artists'][0]['website'].nil? %>
-        <%= link_to("Facebook", info['artists'][0]['facebook_page_url'], class: 'artist_links') unless info['artists'][0]['facebook_page_url'].nil? %>
-      </div>
+      <% if info['artists'][0]['website'].nil? && info['artists'][0]['facebook_page_url'].nil? %>
+        <!-- NOTHING AT ALL -->
+      <% else %>
+        <div class="artist_links_wrapper">
+          <%= link_to("Web", info['artists'][0]['website'], class: 'artist_links') unless info['artists'][0]['website'].nil? %>
+          <%= link_to("Facebook", info['artists'][0]['facebook_page_url'], class: 'artist_links') unless info['artists'][0]['facebook_page_url'].nil? %>
+        </div>
+      <% end %>
     </div>
 
     <div class="animated bounceInUp artist_li">
