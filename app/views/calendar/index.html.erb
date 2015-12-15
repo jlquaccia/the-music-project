@@ -58,9 +58,30 @@
     </div>
   <% end %>
 
+  <%= link_to("Top", "#", class: 'scrollup') %>
+
   <script>
     $(function() {
       $('.feedify').feedify();
+    });
+
+    $(document).ready(function() {
+      // fadeIn/fadeOut scroll to top button depending on what part of the page the user is on
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+          $('.scrollup').fadeIn();
+        } else {
+          $('.scrollup').fadeOut();
+        }
+      });
+
+      // animate a smooth scroll to the top
+      $('.scrollup').click(function() {
+        $("html, body").animate({
+          scrollTop: 0
+        }, 600);
+        return false;
+      });
     });
   </script>
 </div>

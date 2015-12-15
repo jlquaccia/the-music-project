@@ -25,6 +25,15 @@ class UsersController < ApplicationController
     @sorted = @final_array.sort { |a,b| b['followers']['total'] <=> a['followers']['total'] }
 
     # do not display any duplicate recommendations
+    #final_sort is recommendations
+    # we need to remove any artists that we're following from recommendations
+
+    artist_ids = @user.follows.pluck(:artist_id)
+
+    @sorted.select! do |rec|
+      !artist_ids.include?(rec["id"])
+    end
+    
     @final_sort = @sorted.uniq[0...50]
   end
 
