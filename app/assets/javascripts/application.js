@@ -17,17 +17,3 @@
 //= require gmaps/google
 //= require bootstrap
 //= require_tree .
-
-$(document).ready(function() {
-
-  // Display the modal box
-  $(".edit_follows").click(function() {
-    $(".overlay").fadeIn(500);
-  });
-
-  // Hide the modal box
-  $(".exit").click(function() {
-    $(".overlay").fadeOut(500);
-  });
-
-});
