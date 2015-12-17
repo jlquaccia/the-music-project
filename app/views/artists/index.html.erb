@@ -25,7 +25,9 @@
     <hr class="artists_hr">
 
     <% @hash_version_array[0].each_with_index do |band, index| %>      
-      <li class="animated bounceInUp artist_li">
+      
+      <!-- large devices only -->
+      <li class="animated bounceInUp artist_li large_screen_search_results">
         <div class="row">
           <div class="col-md-6">
             <h1 class="artist_name"><%= band["name"] %></h1>
@@ -33,7 +35,7 @@
             <h5><%= number_with_delimiter(band["followers"]["total"], :delimiter => ',') %> followers on Spotify</h5>
             <br>
 
-    <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
+            <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
             
             <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
               &#91; <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id, class: 'follow_link' %> &#93;
@@ -51,6 +53,35 @@
           </div>
         </div>
       </li>
+      <!-- end large devices only -->
+
+      <!-- small devices only -->
+      <li class="animated bounceInUp artist_li small_screen_search_results">
+        <div class="row">
+          <div class="col-md-6">
+            <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
+            <br>
+          </div>
+          <div class="col-md-6">
+            <h1 class="artist_name"><%= band["name"] %></h1>
+            <br>
+            <h5><%= number_with_delimiter(band["followers"]["total"], :delimiter => ',') %> followers on Spotify</h5>
+            <br>
+
+            <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
+            
+            <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
+              &#91; <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id, class: 'follow_link' %> &#93;
+            <% else %>
+              &#91; <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id, class: 'follow_link' %> &#93;
+            <% end %>
+
+            <hr class="artists_hr">
+          </div>
+        </div>
+      </li>
+      <!-- end small devices only -->
+
     <% end %>
   <% elsif @hash_version.nil? %>
     <h3 class="delay2s animated flash">Search for someone..</h3>

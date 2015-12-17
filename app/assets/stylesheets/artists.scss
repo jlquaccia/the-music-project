@@ -42,3 +42,17 @@
 .right {
   float: right;
 }
+
+.small_screen_search_results {
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .small_screen_search_results {
+    display: block;
+  }
+
+  .large_screen_search_results {
+    display: none;
+  }
+}
