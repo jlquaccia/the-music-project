@@ -150,14 +150,16 @@
       return false;
     });
 
-    // $(window).scroll(function() {
-    //   if ($(this).scrollTop() < 100) {
-    //     $('.scrolldown').fadeIn();
-    //   } else {
-    //     $('.scrolldown').fadeOut();
-    //   }
-    // });
+    // fadeOut scroll to recommendations button if user scrolls down
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 100) {
+        $('.scrolldown').fadeOut();
+      } else {
+        $('.scrolldown').fadeOut();
+      }
+    });
 
+    // animate a smooth scroll to the recommendations section
     $('.scrolldown').click(function() {
       $('.scrolldown').fadeOut();
       $("html, body").animate({
