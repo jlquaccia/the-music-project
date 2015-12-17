@@ -59,7 +59,7 @@
       <li class="animated bounceInUp artist_li small_screen_search_results">
         <div class="row">
           <div class="col-md-6">
-            <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
+            <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img artist_img_mobile') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
             <br>
           </div>
           <div class="col-md-6">
