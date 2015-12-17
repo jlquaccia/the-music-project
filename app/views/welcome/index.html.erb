@@ -1,26 +1,28 @@
-<div id="container" class="grid container-fluid">
-  <div class="mobile_bg">
-    <!-- <video autoplay loop poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid">
-      <source src="https://demosthenes.info/assets/videos/polina.webm" type="video/webm">
-      <source src="https://demosthenes.info/assets/videos/polina.mp4" type="video/mp4">
-    </video> -->
+<div class="mobile_bg">
+  <div id="container" class="grid container-fluid">
+    <div>
+      <!-- <video autoplay loop poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid">
+        <source src="https://demosthenes.info/assets/videos/polina.webm" type="video/webm">
+        <source src="https://demosthenes.info/assets/videos/polina.mp4" type="video/mp4">
+      </video> -->
 
-    <%= video_tag("Band_Stock_1.mp4", id: 'bgvid', type: 'video/mp4', autoplay: true, loop: true) %>
+      <%= video_tag("Band_Stock_1.mp4", id: 'bgvid', type: 'video/mp4', autoplay: true, loop: true) %>
 
-    <div class="content">
-      <div class="titlebox">
-        <h1 class="tmp_title">The Music Project</h1>
-        <p>listen loud</p>
+      <div class="content">
+        <div class="titlebox">
+          <h1 class="tmp_title">The Music Project</h1>
+          <p>listen loud</p>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <% if !current_user.present? %>
-          <div class="sign_in_or_up_pills">
-            <%= link_to "Sign In", new_user_session_path, class: 'sign_in' %> <span class="white">or</span>
-            <%= link_to "Sign Up", new_user_registration_path, class: 'sign_up' %>
-          </div>
-        <% end %>
+      <div class="row">
+        <div class="col-md-12">
+          <% if !current_user.present? %>
+            <div class="sign_in_or_up_pills">
+              <%= link_to "Sign In", new_user_session_path, class: 'sign_in' %> <span class="white">or</span>
+              <%= link_to "Sign Up", new_user_registration_path, class: 'sign_up' %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

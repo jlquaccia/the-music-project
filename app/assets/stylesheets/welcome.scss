@@ -61,7 +61,7 @@ h1.tmp_title {
 }
 
 @media all and (max-width: 800px) {
-  body {
+  .mobile_bg {
     background: url('cool-bg.jpg') #000 no-repeat center center fixed;
     background-size: cover;
   }
