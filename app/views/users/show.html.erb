@@ -30,18 +30,20 @@
                 <input type="radio" id="none" name="radio1"> Clear All
               </div>
               <br>
-              <% current_user.follows.each do |follow| %>
-                <div class="follow-row">
-                  <%= follow["artist_name"] %>
+              <div class="follow_section">
+                <% current_user.follows.each do |follow| %>
+                  <div class="follow-row">
+                    <%= follow["artist_name"] %>
 
-                  <!-- button to unfollow an artist -->
-                  
-                  <p class="pull-right unfollow-text" style="display:none">Unfollow</p>
-                  <input type="checkbox" class="unfollow-box pull-right" data-id="<%= follow.id %>" style="display:none"/>
+                    <!-- button to unfollow an artist -->
+                    
+                    <p class="pull-right unfollow-text" style="display:none">Unfollow</p>
+                    <input type="checkbox" class="unfollow-box pull-right" data-id="<%= follow.id %>" style="display:none"/>
 
-                  <hr class="artists_hr">
-                </div>
-              <% end %>
+                    <hr class="artists_hr">
+                  </div>
+                <% end %>
+              </div>
             <% end %>
           </div>
 
@@ -117,7 +119,7 @@
               <%= item['name'] %>
             </div>
             <%= number_with_delimiter(item['followers']['total'], delimiter: ',') %> followers
-            <%= link_to(image_tag(item['images'][0]['url'], class: 'img-responsive artist_recommendation_img', width: 200, height: 200), artists_path) rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg', width: 200, height: 200) %>
+            <%= image_tag(item['images'][0]['url'], class: 'img-responsive artist_recommendation_img', width: 200, height: 200) rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg', width: 200, height: 200) %>
             <br>
           </div>
         <% end %>

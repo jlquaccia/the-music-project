@@ -204,6 +204,7 @@ body {
 .artist_recommendation {
   margin: 15px auto;
   width: 65%;
+  border-radius: 5px;
 }
 
 .artist_recommendation_wrapper {
@@ -400,6 +401,7 @@ span.white {
   padding-right: 0;
   padding-left: 0;
   color: #FFF;
+  height: 555px;
 }
 
 .mb20 {
@@ -408,6 +410,7 @@ span.white {
 
 .inner {
   background: darken(rgba(#F45A39,0.8), 30%) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
+  height: 555px;
 }
 
 @media screen and (max-width: 992px) {
@@ -436,4 +439,16 @@ h5 {
   .mobile_only {
     display: block;
   }
+}
+
+.follow_section {
+  max-height: 250px;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.follow-row {
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
