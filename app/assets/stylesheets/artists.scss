@@ -10,9 +10,12 @@
 }
 
 .artist_img {
-  border-radius: 20px;
-  width: 100px;
-  height: 100px !important;
+  height: auto; 
+  width: 100%;
+  max-width: 200px !important;
+  max-height: 300px;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
 .artist_name {
@@ -21,6 +24,7 @@
 
 .mic_bg {
   background-color: gray;
+  width: 200px;
 }
 
 .delay2s {
@@ -33,4 +37,8 @@
   &:hover {
     color: #808080;
   }
+}
+
+.right {
+  float: right;
 }

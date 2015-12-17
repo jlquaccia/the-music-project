@@ -24,46 +24,33 @@
 
     <hr class="artists_hr">
 
-    <% @hash_version_array[0].each_with_index do |band, index| %>
-      <% if index == @hash_version["artists"]["items"].size - 1 %>
-        <li class="animated bounceInUp artist_li">
-          <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
-          <br>
-          <h1 class="artist_name"><%= band["name"] %></h1>
-          <br>
-          <h5><%= number_with_delimiter(band["followers"]["total"], :delimiter => ',') %> followers on Spotify</h5>
-          <br>
+    <% @hash_version_array[0].each_with_index do |band, index| %>      
+      <li class="animated bounceInUp artist_li">
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="artist_name"><%= band["name"] %></h1>
+            <br>
+            <h5><%= number_with_delimiter(band["followers"]["total"], :delimiter => ',') %> followers on Spotify</h5>
+            <br>
 
-          <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
-          
-          <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
-            &#91; <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id, class: 'follow_link' %> &#93;
-          <% else %>
-            &#91; <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id, class: 'follow_link' %> &#93;
-          <% end %>
-          
-          <!-- no hr with last li -->
-        </li>
-      <% else %>
-        <li class="animated bounceInUp artist_li">
-          <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
-          <br>
-          <h1 class="artist_name"><%= band["name"] %></h1>
-          <br>
-          <h5><%= number_with_delimiter(band["followers"]["total"], :delimiter => ',') %> followers on Spotify</h5>
-          <br>
+    <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
+            
+            <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
+              &#91; <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id, class: 'follow_link' %> &#93;
+            <% else %>
+              &#91; <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id, class: 'follow_link' %> &#93;
+            <% end %>
 
-  <!-- ATTEMPT AT ALLOWING A USER TO FOLLOW/UNFOLLOW AN ARTIST -->
-          
-          <% if follow = current_user.follows.find_by(artist_id: "#{band['id']}") %>
-            &#91; <%= link_to "Unfollow", artist_follow_path("#{band['id']}", follow), method: :delete, id: current_user.id, class: 'follow_link' %> &#93;
-          <% else %>
-            &#91; <%= link_to "Follow", artist_follows_path("#{band['id']}", user_id: current_user.id), method: :post, id: current_user.id, class: 'follow_link' %> &#93;
-          <% end %>
-
-          <hr class="artists_hr">
-        </li>
-      <% end %>
+            <hr class="artists_hr">
+          </div>
+          <div class="col-md-6">
+            <div class="right">
+              <%= image_tag(band["images"].first["url"], class: 'img-responsive artist_img') rescue image_tag("microphone.png", class: 'img-responsive artist_img mic_bg') %>
+              <br>
+            </div>
+          </div>
+        </div>
+      </li>
     <% end %>
   <% elsif @hash_version.nil? %>
     <h3 class="delay2s animated flash">Search for someone..</h3>
