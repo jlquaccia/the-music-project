@@ -42,3 +42,26 @@
     text-decoration: none;
   }
 }
+
+.scrolldown {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  text-indent: 0px;
+  background-color: gray;
+  opacity: 0.5;
+  line-height: 40px;
+  color: #FFF;
+
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+
+  &:hover,
+  &:focus {
+    color: #FFF;
+    text-decoration: none;
+  }
+}

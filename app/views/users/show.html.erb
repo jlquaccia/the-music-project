@@ -108,7 +108,8 @@
 <div class="container-fluid recommendations">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h3>Recommendations</h3>
+      <%= link_to("&darr;".html_safe, "#recommendations", class: 'scrolldown animated bounce') %>
+      <h3 id="recommendations">Recommendations</h3>
       <% if current_user.follows.count == 0 %>
         <p><em>recommendations based on who you follow will appear here..</em></p>
       <% else %>
@@ -145,6 +146,22 @@
     $('.scrollup').click(function() {
       $("html, body").animate({
         scrollTop: 0
+      }, 600);
+      return false;
+    });
+
+    // $(window).scroll(function() {
+    //   if ($(this).scrollTop() < 100) {
+    //     $('.scrolldown').fadeIn();
+    //   } else {
+    //     $('.scrolldown').fadeOut();
+    //   }
+    // });
+
+    $('.scrolldown').click(function() {
+      $('.scrolldown').fadeOut();
+      $("html, body").animate({
+        scrollTop: 605
       }, 600);
       return false;
     });
