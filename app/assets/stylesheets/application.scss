@@ -401,7 +401,7 @@ span.white {
   padding-right: 0;
   padding-left: 0;
   color: #FFF;
-  height: 555px;
+  // height: 555px;
 }
 
 .mb20 {
@@ -410,12 +410,22 @@ span.white {
 
 .inner {
   background: darken(rgba(#F45A39,0.8), 30%) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
-  height: 555px;
+  height: 575px;
 }
 
 @media screen and (max-width: 992px) {
   .mobile_center {
     text-align: center;
+  }
+
+  .inner {
+    height: 1000px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .inner {
+    height: 1075px;
   }
 }
 
@@ -445,6 +455,7 @@ h5 {
   max-height: 250px;
   overflow: auto;
   background-color: rgba(0,0,0,0.1);
+  margin-bottom: 50px;
 }
 
 .follow-row {
