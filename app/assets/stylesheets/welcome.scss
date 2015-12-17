@@ -61,14 +61,19 @@ h1.tmp_title {
 }
 
 @media all and (max-width: 800px) {
-  // body {
+  body {
+    background: url('cool-bg.jpg') #000 no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  // .mobile_bg {
   //   background: url('stardust.png') #000 no-repeat center center fixed;
   //   background-size: cover;
   // }
 
-  // #bgvid {
-  //   display: none;
-  // }
+  #bgvid {
+    display: none;
+  }
 
   h1.tmp_title {
     font-size: 6rem;
