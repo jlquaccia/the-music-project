@@ -108,7 +108,9 @@
 <div class="container-fluid recommendations">
   <div class="row">
     <div class="col-md-12 text-center">
-      <%= link_to("&darr;".html_safe, "#recommendations", class: 'scrolldown animated bounce') %>
+      <% if current_user.follows.count > 0 %>
+        <%= link_to("&darr;".html_safe, "#recommendations", class: 'scrolldown animated bounce') %>
+      <% end %>
       <h3 id="recommendations">Recommendations</h3>
       <% if current_user.follows.count == 0 %>
         <p><em>recommendations based on who you follow will appear here..</em></p>
