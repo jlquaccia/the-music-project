@@ -1,5 +1,6 @@
 class FollowsController < ApplicationController
   include FollowsHelper
+  # respond_to :html, :js => :only [:destroy_many]
 
   def create
     @artist = params[:artist_id]
@@ -31,9 +32,13 @@ class FollowsController < ApplicationController
   end
 
   def destroy_many
-
     Follow.where(id: params[:follow_ids]).delete_all
 
-    render nothing: true
+    # render nothing: true
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end
