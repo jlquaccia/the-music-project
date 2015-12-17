@@ -410,7 +410,7 @@ span.white {
 
 .inner {
   background: darken(rgba(#F45A39,0.8), 30%) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
-  height: 575px;
+  // height: 575px;
 }
 
 @media screen and (max-width: 992px) {
@@ -418,16 +418,16 @@ span.white {
     text-align: center;
   }
 
-  .inner {
-    height: 1000px;
-  }
+  // .inner {
+  //   height: auto;
+  // }
 }
 
-@media screen and (max-width: 430px) {
-  .inner {
-    height: 1075px;
-  }
-}
+// @media screen and (max-width: 430px) {
+//   .inner {
+//     height: 1075px;
+//   }
+// }
 
 h5 {
   em {
