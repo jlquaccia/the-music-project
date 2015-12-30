@@ -463,3 +463,18 @@ h5 {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.about_li_styles {
+  li {
+    text-decoration: underline;
+  }
+}
+
+.about_span_red {
+  color: #F45A39;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.about_hr {
+  border-top: 1px solid #000;
+}

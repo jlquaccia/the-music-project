@@ -33,12 +33,9 @@ class FollowsController < ApplicationController
 
   def destroy_many
     Follow.where(id: params[:follow_ids]).delete_all
+    string_for_counter = "#{view_context.pluralize(current_user.follows.count, 'artist')} total"
 
     # render nothing: true
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render js: "$('.js_follows_count').html('" + string_for_counter + "');"
   end
 end
