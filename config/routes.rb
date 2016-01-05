@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   get 'newsfeed' => 'post#index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
+
   resources :users, only: [:update, :show]
   
   get 'about' => 'welcome#about'
