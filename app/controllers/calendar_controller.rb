@@ -10,7 +10,7 @@ class CalendarController < ApplicationController
     @hash_version_array = []
 
     @user.follows.each do |follow|
-      response = HTTParty.get("http://api.bandsintown.com/artists/#{URI.escape(follow.artist_name)}/events/search.json?api_version=2.0&app_id=el_proyecto_de_la_musica&location=#{@location}")
+      response = HTTParty.get("http://api.bandsintown.com/artists/#{URI.escape(follow.artist_name)}/events/search.json?api_version=2.0&app_id=el_proyecto_de_la_musica&location=#{URI.escape(@location)}")
 
       # binding.pry
 
