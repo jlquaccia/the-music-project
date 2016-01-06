@@ -17,3 +17,9 @@
 //= require gmaps/google
 //= require bootstrap
 //= require_tree .
+//= require jquery.geocomplete
+//= require jquery.turbolinks
+
+$(document).ready(function() {
+  $(".geo_input").geocomplete();
+});

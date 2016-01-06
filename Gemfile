@@ -72,3 +72,5 @@ gem 'geocoder'
 gem 'geokit'
 # Google Maps
 gem 'gmaps4rails'
+# jQuery Turbolinks
+gem 'jquery-turbolinks'

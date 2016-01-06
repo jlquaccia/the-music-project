@@ -6,6 +6,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  
 </head>
 <body>
   <div id="wrapper" class="toggled">
@@ -19,25 +21,25 @@
         <li class="fadeInUp delay03">
           <%= link_to "Home", root_path, class: 'nav_links' %>
         </li>
-        <li class="fadeInUp delay04">
-          <%= link_to "About", about_path, class: 'nav_links' %>
-        </li>
 
         <% if current_user %>
 
-          <li class="fadeInUp delay05">
+          <li class="fadeInUp delay04">
             <%= link_to "Profile", user_path(current_user), class: 'nav_links' %>
           </li>
-          <li class="fadeInUp delay06">
+          <li class="fadeInUp delay05">
             <%= link_to "Artist Search", artists_path, class: 'nav_links' %>
           </li>
-          <li class="fadeInUp delay07">
+          <li class="fadeInUp delay06">
             <%= link_to "Newsfeed", newsfeed_path, class: 'nav_links' %>
           </li>
-          <li class="fadeInUp delay08">
+          <li class="fadeInUp delay07">
             <%= link_to "Calendar", calendar_index_path, class: 'nav_links' %>
           </li>
           <div class="bottom_links">
+            <li class="fadeInUp delay08">
+              <%= link_to "About", about_path, class: 'nav_links' %>
+            </li>
             <li class="fadeInUp delay09">
               <%= link_to "Account", edit_user_registration_path, class: 'nav_links' %>
             </li>
@@ -48,7 +50,10 @@
 
         <% else %>
           
-          <div class="bottom_links">
+          <div>
+            <li class="fadeInUp delay04">
+              <%= link_to "About", about_path, class: 'nav_links' %>
+            </li>
             <li class="fadeInUp delay05">
               <%= link_to "Sign In", new_user_session_path, class: 'nav_links' %>
             </li>
