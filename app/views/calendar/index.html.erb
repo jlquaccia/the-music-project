@@ -48,7 +48,7 @@
       <br>
       <%= info["formatted_location"] %>, <%= info["venue"]["country"] %>
       <br>
-      Tickets <%= info["ticket_status"].titleize %> <%= link_to("Buy", "#{info['ticket_url']}") %>
+      Status: Tickets <%= info["ticket_status"].titleize %> - <%= link_to("Buy", "#{info['ticket_url']}") %>
       <br>
       <%= location_info(info["facebook_rsvp_url"]) %>
       <br>
