@@ -19,13 +19,16 @@ In order to do anything on TMP you must first choose at least one artist to foll
 Next you will be redirected back to your profile page and for the first time, actually see that it is populated with stuff! User profile pages consist of 3 main components:
 
 ### 1. Music
-    Immediately you will notice a Spotify player planted on the left side of the screen. Now that you are following an artist, Metallica, you will see that the player has been filled with tracks by this artist. These will be the top 10 tracks by any artist that you choose to follow. If you follow multiple artists, 10 additional tracks will be added to the Spotify player per each artist. Tracks are automatically shuffled as they come in as well making the order vary with every page refresh. Note: Spotify doesn't allow music to be streamed off of their site unless you have an account with them. Upon trying to hit the play button within your TMP profile you will be redirected to a Spotify page prompting you to either sign in or sign up with them. This doesn't take long, and is worth it. Additionally, you can only play tracks from your profile page through either the Spotify Web Player or a downloaded copy of the Spotify application on your computer. Again, Spotify rules..
+
+Immediately you will notice a Spotify player planted on the left side of the screen. Now that you are following an artist, Metallica, you will see that the player has been filled with tracks by this artist. These will be the top 10 tracks by any artist that you choose to follow. If you follow multiple artists, 10 additional tracks will be added to the Spotify player per each artist. Tracks are automatically shuffled as they come in as well making the order vary with every page refresh. Note: Spotify doesn't allow music to be streamed off of their site unless you have an account with them. Upon trying to hit the play button within your TMP profile you will be redirected to a Spotify page prompting you to either sign in or sign up with them. This doesn't take long, and is worth it. Additionally, you can only play tracks from your profile page through either the Spotify Web Player or a downloaded copy of the Spotify application on your computer. Again, Spotify rules..
 
 ### 2. Follows
-    On the right side of the screen you will see a list of all artists that you are currently following. This list can be edited from your profile by clicking the edit button and selecting any or all artists that you may wish to unfollow at any point.
+
+On the right side of the screen you will see a list of all artists that you are currently following. This list can be edited from your profile by clicking the edit button and selecting any or all artists that you may wish to unfollow at any point.
 
 ### 3. Recommendations
-    As you scroll down the page you will see a list of suggested artists that you might like. Of course this list will be based upon that are following. All recommendations are in order of followers total on Spotify. So artists with more followers on Spotify will show up on the top of the list. This will dynamically change as you begin to follow multiple artists on TMP. Recommendations pertaining to each artist you follow will be integrated together and the most popular artists will remain in the list. A maximum of 50 artists will be suggested.
+
+As you scroll down the page you will see a list of suggested artists that you might like. Of course this list will be based upon that are following. All recommendations are in order of followers total on Spotify. So artists with more followers on Spotify will show up on the top of the list. This will dynamically change as you begin to follow multiple artists on TMP. Recommendations pertaining to each artist you follow will be integrated together and the most popular artists will remain in the list. A maximum of 50 artists will be suggested.
 
 
 ## Artist Search
