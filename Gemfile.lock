@@ -161,7 +161,7 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
-    geocoder (1.2.12)
+    geocoder (1.6.1)
     geokit (1.10.0)
     gmaps4rails (2.1.2)
     hike (1.2.3)
